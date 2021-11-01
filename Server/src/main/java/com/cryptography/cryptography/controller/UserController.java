@@ -16,6 +16,7 @@ import com.cryptography.cryptography.services.UserRepo;
 
 
 
+
 @RestController
 @RequestMapping("/login")
 @CrossOrigin(origins = "*")
@@ -23,10 +24,9 @@ public class UserController {
 		@Autowired
 		private UserRepo userRepo;
 	
-		@GetMapping("/getAllUser")
+		@PostMapping("/getAllUser")
 		public List<UserMaster> getUserMaster() { 			
-				List<UserMaster> pLmObj=userRepo.findAll(); 
-				return pLmObj;
+			return userRepo.findAll();
 		}
 		
 		@PostMapping("/addUser")
@@ -34,6 +34,17 @@ public class UserController {
 				userRepo.save(userObj);
 				List<UserMaster> pLmObj=userRepo.findAll(); 
 				return pLmObj;
+		}
+		@PostMapping("/getUser")
+		public List<UserMaster> findByUserId(@RequestBody UserMaster pLm) {
+		try 
+		{
+			List<UserMaster> pLmObj=userRepo.findByUserId(pLm.getUserId()); 
+			
+			return pLmObj;
+		}catch (Exception e) {
+			return null;
+		}	
 		}
 	
 }

@@ -8,12 +8,16 @@ import { HomeComponent } from './pages/home/home.component';
 import { RegisterationComponent } from './pages/registeration/registeration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataserviseService } from './service/dataservise.service';
+import { EncrpitionComponent } from './pages/encrpition/encrpition.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterationComponent
+    RegisterationComponent,
+    EncrpitionComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

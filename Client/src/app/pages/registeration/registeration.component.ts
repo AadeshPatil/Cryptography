@@ -39,7 +39,7 @@ export class RegisterationComponent implements OnInit {
       }else{
         delete newUser.recheckPw;
         console.log(newUser);
-          this.dataService.getUsers(newUser).subscribe((res: any)=>{
+          this.dataService.addUser(newUser).subscribe((res: any)=>{
            alert("New User Saves Successfully !")
           });
       }

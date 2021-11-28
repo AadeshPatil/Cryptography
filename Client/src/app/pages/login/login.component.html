@@ -11,22 +11,21 @@
             <div class="col-lg-6">
                 <div class="card2 card border-0 px-4 py-5">
 
-                    <form class="mx-1 mx-md-4 loginPage" (ngSubmit)="onLogin()" [formGroup]="userLoginForm">
+                    <form class="mx-1 mx-md-4 loginPage" (ngSubmit)="onLogin()" [formGroup]="loginForm">
                         <h1 class="py-5 sign-in">Login Here</h1>
-                        <div class="row px-3"> <label class="mb-1">
-                                <h6 class="mb-0 text-sm">Login Id</h6>
-                            </label>
-                            <input class="form-control" formControlName="userId" name="userId" id="userId">
-                            <div class="row px-3"> <label class="mb-1">
-                                    <h6 class="mb-0 text-sm">Password</h6>
-                                </label>
-                                <input class="form-control" formControlName="password" name="password" id="password">
-                            </div>
-                            <div class="row mb-3 px-3"> <button type="submit"
-                                    class="btn btn-blue text-center">Login</button> </div>
-                            <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account?
-                                    <a routerLink="/register">Register</a></small> </div>
-                        </div>
+                        <label class="mb-1">
+                            <h6 class="mb-0 text-sm">User Name</h6>
+                        </label>
+                        <input class="form-control" formControlName="username" name="username" id="username">
+                        <label class="mb-1">
+                            <h6 class="mb-0 text-sm">Password</h6>
+                        </label>
+                        <input class="form-control" formControlName="password" name="password" id="password">
+
+                        <div class="row mb-3 px-3"> <button type="submit"
+                                class="btn btn-blue text-center">Login</button> </div>
+
+
                     </form>
                 </div>
             </div>

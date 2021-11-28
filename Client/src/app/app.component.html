@@ -1,3 +1,15 @@
-<!-- <router-outlet></router-outlet> -->
+<!-- BEGIN PAGE LOADER  -->
+<div class="preloader-backdrop">
+    <div class="page-preloader">Loading</div>
+</div>
+<!-- END PAGE LOADER  -->
 
-<app-home></app-home>
+<!-- BEGIN PAGE  -->
+<router-outlet></router-outlet>
+<!-- END PAGE  -->
+<ngx-spinner></ngx-spinner>
+
+
+<!-- SCROLL TOP -->
+<div class="to-top"><i class="fa fa-angle-double-up"></i></div>
+<!-- END SCROLL TOP -->

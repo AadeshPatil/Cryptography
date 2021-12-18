@@ -1,29 +1,37 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { DataService } from '../../_services/data.service';
 import { AuthService } from '../../_services/auth.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: '[app-header]',
   templateUrl: './app-header.component.html',
 })
 export class AppHeader implements AfterViewInit {
-  origEffort : String = '75';
-  workHr : String = ' (Working Hours 5 days/week))';
-  daysPassed : number;
   userName : String = "";
-  startDate : Date = new Date('05/03/2021');
-  endDate : Date = new Date()
-  constructor(private authService: AuthService
-  ) { }
+  messages: any;
+  userNumId: any;
+  msgForDcrpt: any;
+  showAlertIcon: boolean = false;
 
+  constructor( private router: Router,private dataService: DataService,private authService: AuthService,) { }
 
   ngOnInit() {
+    this.userNumId = this.authService.getUserNumId();
+    this.dataService.getMsgs(this.userNumId).subscribe(data => {
+      this.messages = data;
+      this.msgList(data);
+    });
     this.userName=this.authService.getUserNameToken(); 
-    //var endDate = new Date('07/28/2021');
-    ;
-    var numOfDates = this.getBusinessDatesCount(this.startDate,this.endDate);
-    //var numOfDates = this.workingDaysBetweenDates(startDate,endDate);
-    //console.log(numOfDates)
-    this.daysPassed=numOfDates;
+  }
+  msgList(data) {
+    if(data){
+      data.forEach(element => {
+        if(element.reciverLocation == "" ||element.reciverLocation == null || element.reciverLocation == undefined){
+          this.showAlertIcon = true;
+          return;
+        }
+      });
+    }
   }
   ngAfterViewInit()  {
   }
@@ -32,17 +40,5 @@ export class AppHeader implements AfterViewInit {
     this.authService.logout();
   }
 
-  getBusinessDatesCount(startDate, endDate) {
-    let count = 0;
-    const curDate = new Date(startDate.getTime());
-    while (curDate <= endDate) {
-        const dayOfWeek = curDate.getDay();
-        //console.log("Date : "+curDate+" dayOfWeek : "+dayOfWeek)
-        if(!(dayOfWeek in [0,6])) count++; 
-        curDate.setDate(curDate.getDate() + 1);
-    }
-    //alert(count);
-    return count;
-}
 
 }

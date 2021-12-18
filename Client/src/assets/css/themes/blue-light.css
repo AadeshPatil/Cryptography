@@ -12,7 +12,7 @@
   color: inherit; }
   .side-menu > li a:hover, .side-menu > li a:focus {
     color: #fff;
-    background-color: #3498db; }
+    background-color: #d1d4a1; }
 
 .side-menu > li.active {
   background-color: #ededed; }

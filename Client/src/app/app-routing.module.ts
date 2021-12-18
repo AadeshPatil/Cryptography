@@ -16,12 +16,21 @@ import { IconsComponent } from './pages/ui/icons/icons.component';
 import { ButtonsComponent } from './pages/ui/buttons/buttons.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { TextEncComponent } from './pages/text-enc/text-enc.component';
+import { TextDecryptComponent } from './pages/text-decrypt/text-decrypt.component';
+import { MessagesComponent } from './pages/messages/messages.component';
+import { UserDetilsComponent } from './pages/user-detils/user-detils.component';
+import { ImgEncComponent } from './pages/img-enc/img-enc.component';
+import { ImgDecryptComponent } from './pages/img-decrypt/img-decrypt.component';
+import { DocEncComponent } from './pages/doc-enc/doc-enc.component';
+import { DocDecryptComponent } from './pages/doc-decrypt/doc-decrypt.component';
 //import { FormsModule } from '@angular/forms';
 //import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
+    {path: 'register', component: RegisterComponent, canActivate: [AuthGuard]},
     {
         "path": "",
         "component": LayoutComponent,
@@ -72,7 +81,46 @@ const routes: Routes = [
                 component: IconsComponent,
                 canActivate: [ComponentGuard]
             },
-            
+            {
+                path: "textEnc",
+                component: TextEncComponent,
+                canActivate: [ComponentGuard]
+            },
+            {
+                path: "txtDecrypt",
+                component: TextDecryptComponent,
+                canActivate: [ComponentGuard]
+            },
+            {
+                path: "message",
+                component: MessagesComponent,
+                canActivate: [ComponentGuard]
+            },
+            {
+                path: "user",
+                component: UserDetilsComponent,
+                canActivate: [ComponentGuard]
+            },
+            {
+                path :"imgEnc",
+                component:ImgEncComponent,
+                canActivate:[ComponentGuard]
+            },
+            {
+                path :"imgDcrpt",
+                component:ImgDecryptComponent,
+                canActivate:[ComponentGuard]
+            },
+            {
+                path :"docEnc",
+                component:DocEncComponent,
+                canActivate:[ComponentGuard]
+            },
+            {
+                path :"docDcrpt",
+                component:DocDecryptComponent,
+                canActivate:[ComponentGuard]
+            }
         ]},
    
     {
@@ -95,7 +143,7 @@ const routes: Routes = [
     ListComponent,
     IconsComponent,
     ButtonsComponent,
-    RegisterComponent,
+    
     
   ],
   imports: [ RouterModule.forRoot(routes) ],

@@ -1,50 +1,59 @@
-<div class="content">
-    <div class="brand">
-        <a class="link" routerLink="/index">AdminCAST</a>
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+            <h3>Welcome</h3>
+            <p>You are 30 seconds away for Securing youself from Hackers!</p>
+            <input type="submit" name="" value="Login" /><br />
+        </div>
+        <form class="" (ngSubmit)="onSubmit()" [formGroup]="loginForm" autocomplete="off">
+            <div class="col-md-9 register-right">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">Sign Up</h3>
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="fName"
+                                        placeholder="First Name *" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="lName"
+                                        placeholder="Last Name *" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" formControlName="password"
+                                        placeholder="Password *" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" formControlName="rePassword"
+                                        placeholder="Confirm Password *" />
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" formControlName="emailId"
+                                        placeholder="Your Email *" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" minlength="10" maxlength="10" formControlName="mobileNo"
+                                        name="txtEmpPhone" class="form-control" placeholder="Your Phone *" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" minlength="3" maxlength="15" formControlName="userId"
+                                        name="txtEmpPhone" class="form-control" placeholder="UserID *" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="city" placeholder="City *"
+                                     />
+                                </div>
+                                <input type="submit" class="btnRegister"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-    <form id="register-form" action="javascript:;" method="post">
-        <h2 class="login-title">Sign Up</h2>
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="first_name" placeholder="First Name">
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="last_name" placeholder="Last Name">
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="email" name="email" placeholder="Email" autocomplete="off">
-        </div>
-        <div class="form-group">
-            <input class="form-control" id="password" type="password" name="password" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="password_confirmation" placeholder="Confirm Password">
-        </div>
-        <div class="form-group text-left">
-            <label class="ui-checkbox ui-checkbox-info">
-                <input type="checkbox" name="agree">
-                <span class="input-span"></span>I agree the terms and policy</label>
-        </div>
-        <div class="form-group">
-            <button class="btn btn-info btn-block" type="submit">Sign up</button>
-        </div>
-        <div class="social-auth-hr">
-            <span>Or Sign up with</span>
-        </div>
-        <div class="text-center social-auth m-b-20">
-            <a class="btn btn-social-icon btn-twitter m-r-5" href="javascript:;"><i class="fa fa-twitter"></i></a>
-            <a class="btn btn-social-icon btn-facebook m-r-5" href="javascript:;"><i class="fa fa-facebook"></i></a>
-            <a class="btn btn-social-icon btn-google m-r-5" href="javascript:;"><i class="fa fa-google-plus"></i></a>
-            <a class="btn btn-social-icon btn-linkedin m-r-5" href="javascript:;"><i class="fa fa-linkedin"></i></a>
-            <a class="btn btn-social-icon btn-vk" href="javascript:;"><i class="fa fa-vk"></i></a>
-        </div>
-        <div class="text-center">Already a member?
-            <a class="color-blue" routerLink="/login">Login here</a>
-        </div>
-    </form>
 </div>

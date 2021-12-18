@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     $('body').addClass('empty-layout bg-silver-300');
     this.loginForm = this.formBuilder.group({
-      userName: [''],
+      username: [''],
       password: [''],
       userType: [''],
     });
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
     this.spinner.show();
     this.authService.login(
       {
-        username: this.f.userName.value,
+        username: this.f.username.value,
         password: this.f.password.value
       }
     )
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
       this.spinner.hide();
       console.log(err.message);
       if(err.status=403)
-      alert("Invalid/UserName password");
+      alert("Invalid/username password");
     });
   }
 

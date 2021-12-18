@@ -15,9 +15,29 @@ import { AppRoutingModule } from './/app-routing.module';
 import { LayoutModule } from './/layouts/layout.module';
 import { ScriptLoaderService } from './_services/script-loader.service';
 import { DataService } from './_services/data.service';
+import { TextDecryptComponent } from './pages/text-decrypt/text-decrypt.component';
+import { TextEncComponent } from './pages/text-enc/text-enc.component';
+import { MessagesComponent } from './pages/messages/messages.component';
+import { UserDetilsComponent } from './pages/user-detils/user-detils.component';
+import { ImgEncComponent } from './pages/img-enc/img-enc.component';
+
+import { HelperService } from './_services/helper.service';
+import { ImgDecryptComponent } from './pages/img-decrypt/img-decrypt.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { DocDecryptComponent } from './pages/doc-decrypt/doc-decrypt.component';
+import { DocEncComponent } from './pages/doc-enc/doc-enc.component';
 @NgModule({
    declarations: [
     AppComponent,
+    TextDecryptComponent,
+    TextEncComponent,
+    MessagesComponent,
+    UserDetilsComponent,
+    ImgEncComponent,
+    ImgDecryptComponent,
+    RegisterComponent,
+    DocDecryptComponent,
+    DocEncComponent
     
     
   ],
@@ -35,7 +55,7 @@ import { DataService } from './_services/data.service';
     DataTableModule,
     DeviceDetectorModule
   ],
-  providers: [ScriptLoaderService, DataService, DatePipe],
+  providers: [ScriptLoaderService, DataService, DatePipe,HelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

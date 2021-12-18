@@ -134,3 +134,7 @@ a {
     font-family: 'Irish Grover', cursive;
     color: #6a69ca;
 }
+
+.signUp{
+    cursor: pointer;
+}

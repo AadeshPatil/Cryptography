@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
+import {  HttpHeaders } from '@angular/common/http';
 import { map, catchError, mapTo, tap } from 'rxjs/operators';
 import { config } from './config';
 import { Tokens } from '../models/tokens';
@@ -22,15 +23,11 @@ export class AuthService {
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   private tokenGeneratedAt = 'tokenGeneratedAt';
   private loggedUser: string;
+  dcrptMsg: any;
+  imgMsg: boolean = false;
   
   constructor(private http: HttpClient,  private router: Router,private spinner: NgxSpinnerService) { }
 
-
-
-  // onLogin(user){
-  //   this.login(user).subscribe(
-  //     (resp)=>console.log("response---",resp));
-  // }
 
   login(user){
     return this.http.post(`${config.apiUrl}/login`, user,{observe: 'response'})
@@ -40,39 +37,21 @@ export class AuthService {
       catchError(error => {
         alert("Invalid UserName/Password");
         console.log(error);
-        //this.router.navigate(['/login']);
         this.spinner.hide();
         return of(false);
     }));
-      // .pipe(
-      //   tap(tokens => {console.log("response---",tokens);this.doLoginUser(user.username, tokens)}),
-      //   mapTo(true),
-      //   catchError(error => {
-      //     alert(error.error);
-      //     return of(false);
-      //   }));
   }
 
+  register(user){
+    
+ let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'X-Auth-Token', }) }
+    return this.http.post(`${config.apiUrl}/users/signUp`,user,httpOptions).subscribe(res => {
+      console.log(res);
+    })  }
+
   logout() {
-    //console.log("Logout start")
-    //this.doLogoutUser();
-    // this.http.post(`${config.apiUrl}/doLogout`, {},{observe: 'response'})
-    // .pipe(
-    //   tap(resp => {this.doLogoutUser()}),
-    //   mapTo(true),
-    //   catchError(error => {
-    //     alert(error.error);
-    //     return of(false);
-    //   })); 
-      //console.log("Logout start 1")
-      //this.http.post(`${config.apiUrl}/doLogout`, {},{observe: 'response'}).subscribe((data: any)=>{
         this.doLogoutUser();
-        //console.log(this.caseStatDetails);
         this.spinner.hide();
-      // }, error => {
-      //   this.spinner.hide();
-      //   console.log("Logout : "+error);
-      // });
   }
 
 
@@ -95,31 +74,11 @@ export class AuthService {
     this.loggedUser = username;
     var userPerms ="";
     let userDetails;
-    // this.fetchPermissionByRoleNm(userRoletoken).subscribe((data: any) => {
-    //   userPerms  = data.obj;
-    //   //console.log("User Permission Data: ",userPerms);
-    // }, err => {
-    //   if (err.status == 404) {
-    //     /// you can check for any status like 404 not found 
-    //     console.log('Web Service not found');
-    //   }
-    // }); 
     console.log(userId);
-    // this.fetchUserDetails(userId).subscribe((data: any) => {
-    //   userDetails  = data;
-    //   //console.log("User Permission Data: ",userPerms);
-    // }, err => {
-    //   if (err.status == 404) {
-    //     /// you can check for any status like 404 not found 
-    //     console.log('Web Service not found for UserD');
-    //   }
-    // });
-    
     this.storeTokens(bearerToken, userRoletoken,username,userPerms,userNumId);
   }
 
   private doLogoutUser() {
-    //console.log("doLogout start")
     this.loggedUser = null;
     this.removeTokens();
   }
@@ -199,5 +158,18 @@ export class AuthService {
   }
   fetchUserDetails(userId){
     return this.http.post(`${config.apiUrl}//users/fetchUId/${userId}`, {});
+  }
+
+  setDcrptMsg(data){
+    this.dcrptMsg = data;
+  }
+  getMsg(){
+    return this.dcrptMsg;
+  }
+  setDcrptMsgForImg(){
+    this.imgMsg = true;
+  }
+  getImgMsg(){
+    return this.imgMsg;
   }
 }

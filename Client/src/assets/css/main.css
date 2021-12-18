@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 .clf:after, .clf:before {
   content: '';
   display: table; }
@@ -69,10 +70,11 @@ dt {
   font-weight: 700; }
 
 .headline{
+
   margin: 0;
-    font-family: 'Roboto';
+  font-family: 'Satisfy', cursive;
     color: #000;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
 }
 mark {
@@ -3149,7 +3151,7 @@ body.fixed-layout.sidebar-mini .content-wrapper {
   position: relative;
   background-color: #f7f7f7;
   background-color: #f2f2f2;
-  background-color: #e6e1e1;
+  background-color: #f8f9fa;
   margin-left: 220px;
   position: relative;
   padding: 0 15px 60px 15px;
@@ -3386,7 +3388,7 @@ body.has-backdrop .backdrop {
       color: #fff; }
 
 .page-sidebar {
-  background-color: #3a237b}
+  background-color: #1c2b55}
   .page-sidebar .admin-block .admin-info {
     color: #fff; }
     .page-sidebar .admin-block .admin-info small {
@@ -3399,13 +3401,13 @@ body.has-backdrop .backdrop {
   color: #ecf0f7!important; }
   .side-menu > li a:hover, .side-menu > li a:focus {
     color: #fff;
-    background-color: #4e4a9f; }
+    background-color: #4397b7; }
 
 .side-menu > li.active {
-  background-color: #3a237b; }
+  background-color: #011645; }
   .side-menu > li.active > a, .side-menu > li.active > a:hover, .side-menu > li.active > a:focus {
     color: #fff;
-    background-color: #4e4a9f }
+    background-color: #4397b7 }
 
     ::-webkit-scrollbar {
       width: 8px;
@@ -3416,13 +3418,13 @@ body.has-backdrop .backdrop {
        border-radius: 10px;
     }
     ::-webkit-scrollbar-thumb {
-      background: #03a89e; 
+      background: #4397b7; 
       border-radius: 10px;
     }
     
     /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #03a89e; 
+  background: #4397b7; 
 }
 
 .side-menu li a.active {
@@ -3433,7 +3435,7 @@ body.has-backdrop .backdrop {
   color: #fff; }
 
 .sidebar-mini .side-menu > li:hover .nav-2-level {
-  background-color: #253544; }
+  background-color: #a8f0ce; }
 
 .header .page-brand {
   color: #1d1304;

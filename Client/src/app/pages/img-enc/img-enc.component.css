@@ -1,8 +1,24 @@
 .contact-form{
-    background: #fff;
-    margin-top: 1%;
-    height: fixed!important;
-}
+    background: rgba(214, 208, 208, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6.5px);
+    border: 1px solid rgba(214, 208, 208, 0.3);
+    height: 390px;
+    width:800px;
+    color: white;
+    margin-top: 30px;
+    }
+section.cover{
+    margin-top: 20px;
+    background-image: url(../../../assets/img/loginbg.jpg);
+    padding: 20px 10%;
+      border-bottom: 50px solid transparent;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 500px;
+  }
 .contact-form .form-control{
     border-radius:1rem;
 }
@@ -25,16 +41,16 @@
     margin-bottom: 8%;
     margin-top: -10%;
     text-align: center;
-    color: #0062cc;
+    color: #f9fafb;
 }
 .contact-form .btnContact {
-    width: 50%;
+    width: auto;
     border: none;
     border-radius: 1rem;
     padding: 1.5%;
-    background: #8458ec;
+    background: #bece65;
     font-weight: 600;
-    color: #fff;
+    color: rgb(0, 0, 0);
     cursor: pointer;
 }
 .btnContactSubmit

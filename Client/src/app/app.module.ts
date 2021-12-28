@@ -20,12 +20,15 @@ import { TextEncComponent } from './pages/text-enc/text-enc.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { UserDetilsComponent } from './pages/user-detils/user-detils.component';
 import { ImgEncComponent } from './pages/img-enc/img-enc.component';
+import { TypingAnimationDirective } from 'angular-typing-animation'
 
 import { HelperService } from './_services/helper.service';
 import { ImgDecryptComponent } from './pages/img-decrypt/img-decrypt.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DocDecryptComponent } from './pages/doc-decrypt/doc-decrypt.component';
 import { DocEncComponent } from './pages/doc-enc/doc-enc.component';
+import { DashbComponent } from './pages/dashb/dashb.component';
+import { SupportComponent } from './pages/support/support.component';
 @NgModule({
    declarations: [
     AppComponent,
@@ -37,7 +40,10 @@ import { DocEncComponent } from './pages/doc-enc/doc-enc.component';
     ImgDecryptComponent,
     RegisterComponent,
     DocDecryptComponent,
-    DocEncComponent
+    DocEncComponent,
+    DashbComponent,
+    SupportComponent,
+    TypingAnimationDirective
     
     
   ],

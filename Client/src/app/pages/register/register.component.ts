@@ -17,18 +17,17 @@ export class RegisterComponent implements OnInit {
   ngOnInit(){
     this.loginForm = this.formBuilder.group({
       userId: ['',Validators.required],
-      fName : ['',Validators.required],
-      lName : ['',Validators.required],
       mobileNo : ['',Validators.required],
       password : ['',Validators.required],
       rePassword :['',Validators.required],
-      emailId : ['',Validators.required],
-      state : [''],
-      city : ['',Validators.required],
-      completeName : [''],
+      checkBox :['',Validators.required],
+      emailId :['',Validators.required]
   });
   }
   onSubmit(){
+    if(this.loginForm.controls.checkBox.value == false){
+      alert("Please Accpet the terms and conditions.")
+    }
     
     var controls = this.loginForm.controls;
     if(controls.password.value != controls.rePassword.value){
@@ -37,14 +36,13 @@ export class RegisterComponent implements OnInit {
     }
     var Obj = {
       userId :controls.userId.value,
-      fName : controls.fName.value,
-      lName : controls.lName.value,
       mobileNo : controls.mobileNo.value,
       password : controls.password.value,
-      emailId : controls.emailId.value,
-      state : controls.state.value ? controls.state.value :null,
-      city : controls.city.value,
-      completeName : controls.fName.value + controls.lName.value,
+      
+        emailId :controls.emailId.value,
+        role : "user",
+        userType : "user",
+    
     };
     if (this.loginForm.invalid) {
       alert("Invalid input, please fill all the required fields correctly");

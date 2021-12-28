@@ -1,4 +1,24 @@
-
+.contact-form{
+    background: rgba(214, 208, 208, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6.5px);
+    border: 1px solid rgba(214, 208, 208, 0.3);
+    height: 390px;
+    width:800px;
+    color: white;
+    margin-top: 30px;
+    }
+section.cover{
+    margin-top: 20px;
+    background-image: url(../../../assets/img/loginbg.jpg);
+    padding: 20px 10%;
+      border-bottom: 50px solid transparent;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 500px;
+  }
 .padding {
     padding: 3rem !important
 }
@@ -127,4 +147,10 @@ h6 {
     margin: 0 10px 0 0;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out
+}
+
+.heading{
+    color: black;
+    font-weight: bolder;
+    text-decoration: underline;
 }

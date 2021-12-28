@@ -1,3 +1,4 @@
+<section class="cover">
 <div class="page-content page-container" id="page-content">
     <div class="padding">
         <div class="row container d-flex justify-content-center">
@@ -14,7 +15,9 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="card-block">
-                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                <h6 class="heading">Information</h6>
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600"></h6>
+
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">First Name</p>
@@ -37,8 +40,22 @@
                                     </div>
                                 </div>
                                 <h6 class="m-b-20 p-b-5 b-b-default f-w-600"></h6>
-
-                            </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">city</p>
+                                        <h6 class="text-muted f-w-400">{{userDetials?.city}}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">state</p>
+                                        <h6 class="text-muted f-w-400">{{userDetials?.state}}</h6>
+                                    </div>
+                                </div>
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600"></h6>
+                                
+                              </div>  
+                              <button class="btn btn-primary float-right" value="submit">Save Details</button>
+                        <br>
+                        <br>
                         </div>
                     </div>
                 </div>
@@ -46,3 +63,5 @@
         </div>
     </div>
 </div>
+    
+</section>

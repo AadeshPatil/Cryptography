@@ -24,11 +24,14 @@ import { ImgEncComponent } from './pages/img-enc/img-enc.component';
 import { ImgDecryptComponent } from './pages/img-decrypt/img-decrypt.component';
 import { DocEncComponent } from './pages/doc-enc/doc-enc.component';
 import { DocDecryptComponent } from './pages/doc-decrypt/doc-decrypt.component';
+import { DashbComponent } from './pages/dashb/dashb.component';
+import { SupportComponent } from './pages/support/support.component';
 //import { FormsModule } from '@angular/forms';
 //import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
-    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path: '', redirectTo: 'dashb', pathMatch: 'full'},
+    {path:'dashb',component:DashbComponent,canActivate:[AuthGuard]},
     {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
     {path: 'register', component: RegisterComponent, canActivate: [AuthGuard]},
     {
@@ -119,6 +122,11 @@ const routes: Routes = [
             {
                 path :"docDcrpt",
                 component:DocDecryptComponent,
+                canActivate:[ComponentGuard]
+            },
+            {
+                path :"support",
+                component:SupportComponent,
                 canActivate:[ComponentGuard]
             }
         ]},

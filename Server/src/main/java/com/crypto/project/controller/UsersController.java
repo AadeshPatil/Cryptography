@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,7 @@ import com.crypto.project.service.UsersRepository;
 
 @RequestMapping("/users")
 @RestController
+
 public class UsersController {
 
 	@Autowired
@@ -80,7 +82,7 @@ public class UsersController {
 		return ResponseEntity.ok().build();
 	}
 	@PostMapping("/signUp")
-	
+	@CrossOrigin("*")
 	public Users addUser(@RequestBody Users user) {
 			
 		String txtPwd=user.getPassword();				

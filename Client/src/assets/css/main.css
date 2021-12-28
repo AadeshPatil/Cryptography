@@ -2942,7 +2942,8 @@ a.text-danger:hover, a.text-danger:focus {
       border-color: #f4f5f9;
       font-size: 13px; }
   .header .sidebar-toggler {
-    font-size: 18px; }
+    font-size: 18px; 
+  border: black;}
   .header .dropdown-user {
     padding-right: 10px; }
     .header .dropdown-user a.dropdown-toggle {
@@ -3151,7 +3152,7 @@ body.fixed-layout.sidebar-mini .content-wrapper {
   position: relative;
   background-color: #f7f7f7;
   background-color: #f2f2f2;
-  background-color: #f8f9fa;
+  background-color: #fff;
   margin-left: 220px;
   position: relative;
   padding: 0 15px 60px 15px;
@@ -3388,7 +3389,7 @@ body.has-backdrop .backdrop {
       color: #fff; }
 
 .page-sidebar {
-  background-color: #1c2b55}
+  background-color: #151680}
   .page-sidebar .admin-block .admin-info {
     color: #fff; }
     .page-sidebar .admin-block .admin-info small {

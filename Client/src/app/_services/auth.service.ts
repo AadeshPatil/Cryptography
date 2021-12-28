@@ -9,6 +9,7 @@ import { Tokens } from '../models/tokens';
 import { Router } from '@angular/router';
 import {HttpResponse} from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
+import * as CryptoJS from 'crypto-js';
 
 
 @Injectable()
@@ -47,6 +48,11 @@ export class AuthService {
  let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'X-Auth-Token', }) }
     return this.http.post(`${config.apiUrl}/users/signUp`,user,httpOptions).subscribe(res => {
       console.log(res);
+      if(res){
+        alert("Succefully created an account, please Login with your creads!");
+        this.router.navigate(['/login']);
+
+      }
     })  }
 
   logout() {
@@ -108,7 +114,7 @@ export class AuthService {
     localStorage.removeItem(this.userAgencyId_TOKEN);
     localStorage.removeItem(this.tokenGeneratedAt);
     //localStorage.removeItem(this.REFRESH_TOKEN);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/dashb']);
   }
 
   refreshToken() {
@@ -172,4 +178,27 @@ export class AuthService {
   getImgMsg(){
     return this.imgMsg;
   }
+  getEncrptData(text,key){
+    try {
+      return CryptoJS.AES.encrypt(JSON.stringify(text),key).toString();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+
+  getDrcrptData(text,key){
+    try {
+      const bytes = CryptoJS.AES.decrypt(text,key);
+      if (bytes.toString()) {
+        return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+      }
+      return text;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+
+  
 }

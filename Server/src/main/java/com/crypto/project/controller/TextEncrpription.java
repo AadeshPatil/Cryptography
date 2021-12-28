@@ -46,18 +46,29 @@ public class TextEncrpription {
 	
 	@PostMapping("/encTxt")
 	public ResponseEntity<Object> encrptTxt(@RequestBody TextEncDcrtModel txtObj) throws NoSuchElementException{
-		String EncTxt = TextHelper.encrypt(txtObj.getText(), txtObj.getKey());
-    	Optional<Users> userOptionall =  userServise.findByUserId(txtObj.getUserId());
+		  String EncTxt = TextHelper.encrypt(txtObj.getText(), txtObj.getKey());
+		  
+		  try {
+			  String reciversList = txtObj.getUserId();
+		      String[] array = reciversList.split(",");
+		      for(String value:array) {
+		    	  try {
+		    	    	Optional<Users> userOptionall =  userServise.findByUserId(value);
+		    	    	long userNumid = userOptionall.get().getUserNumId();
+		    	    	EncData enObj = new EncData(0, EncTxt, txtObj.getTime(), userNumid, txtObj.getSenderName(),"text","","");
+		    	        EncDStored.save(enObj);   	  
+		    	  }catch (Exception e) {
+		    		  e.getMessage();
+					// TODO: handle exception
+				}
+		      }
+		      return ResponseEntity.ok().build();
+			
+		  } catch (Exception e) {
+				// TODO: handle exception
+			}
+		return null;
 
-    	long userNumid = userOptionall.get().getUserNumId();
-    	try {
-        	EncData enObj = new EncData(0, EncTxt, txtObj.getTime(), userNumid, txtObj.getSenderName(),"text","","");
-        	EncDStored.save(enObj);
-        	return ResponseEntity.ok().build();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-    	return null;
 
 	}
 	

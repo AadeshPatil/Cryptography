@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../_services/auth.service';
 import { DataService } from '../../_services/data.service';
+import * as CryptoJS from 'crypto-js';
+
 @Component({
   selector: 'app-text-decrypt',
   templateUrl: './text-decrypt.component.html',
@@ -21,33 +23,53 @@ export class TextDecryptComponent implements OnInit {
       text: ['', Validators.required],
       key: ['', Validators.required],
     });
- 
+
   }
-  onSubmit(){
-    if(this.dcrptObj == "" || this.dcrptObj == null || this.dcrptObj == undefined){
+  onSubmit() {
+    if (this.dcrptObj == "" || this.dcrptObj == null || this.dcrptObj == undefined) {
       alert("Something went Wrong please try again");
       return;
     }
     var controls = this.dcrptMsgForm.controls;
+
     var Obj = {
       text: this.dcrptObj.encryptedData,
       key: controls.key.value,
     };
+
     this.dataService.dcrptTxt(Obj).subscribe(res => {
       let data = res.body['txt'];
-    if(data == ""|| data == null ||data == undefined ){
-      alert("Please check the key you enterd !")
-    }else{
-      this.showMsg = true;
-      this.secreatMsg = data;
-      this.dcrptMsgForm.controls['text'].setValue(this.secreatMsg);
-    }
+      if (data == "" || data == null || data == undefined) {
+        alert("Please check the key you enterd !");
+      } else {
+        this.showMsg = true;
+        this.secreatMsg = data;
+
+        let dcData = this.decryptData(data, this.dcrptMsgForm.controls.key.value);
+        if (dcData) {
+          this.dcrptMsgForm.controls['text'].setValue(dcData);
+        }
+        
+      }
     })
 
   }
 
-  getIPAddress(){
+  getIPAddress() {
   }
+
+  decryptData(data, key) {
+    try {
+      const bytes = CryptoJS.AES.decrypt(data, key);
+      if (bytes.toString()) {
+        return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+      }
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
 }
 
 

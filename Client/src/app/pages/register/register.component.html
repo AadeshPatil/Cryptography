@@ -1,59 +1,37 @@
-<div class="container register">
-    <div class="row">
-        <div class="col-md-3 register-left">
-            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-            <h3>Welcome</h3>
-            <p>You are 30 seconds away for Securing youself from Hackers!</p>
-            <input type="submit" name="" value="Login" /><br />
+<div class="main">
+    <span class="navbar-brand">
+        <h1 routerLink="/dashb">Secured World !
+        </h1>
+    </span>
+
+    <div class="login-box">
+        <div class="text-login">
+            <br>
+            <p>SING UP</p>
+            <span>You are just 5 minuts away from securing yourself.</span>
         </div>
-        <form class="" (ngSubmit)="onSubmit()" [formGroup]="loginForm" autocomplete="off">
-            <div class="col-md-9 register-right">
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h3 class="register-heading">Sign Up</h3>
-                        <div class="row register-form">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" formControlName="fName"
-                                        placeholder="First Name *" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" formControlName="lName"
-                                        placeholder="Last Name *" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" formControlName="password"
-                                        placeholder="Password *" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" formControlName="rePassword"
-                                        placeholder="Confirm Password *" />
-                                </div>
-                                
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" formControlName="emailId"
-                                        placeholder="Your Email *" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" minlength="10" maxlength="10" formControlName="mobileNo"
-                                        name="txtEmpPhone" class="form-control" placeholder="Your Phone *" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" minlength="3" maxlength="15" formControlName="userId"
-                                        name="txtEmpPhone" class="form-control" placeholder="UserID *" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" formControlName="city" placeholder="City *"
-                                     />
-                                </div>
-                                <input type="submit" class="btnRegister"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
+        <div class="login-form">
+            <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" autocomplete="off">
+                <input class="form-control" formControlName="userId" name="userId" id="userId" type="text"
+                    placeholder="UserID">
+                <input class="form-control" formControlName="mobileNo" name="mobileNo" id="mobileNo" type="number"
+                    minlength="10" maxlength="10" placeholder="Mobile No">
+                <input class="form-control" formControlName="emailId" name="emailId" id="emailId" placeholder="Email Id"
+                    type="email">
+                <input class="form-control" formControlName="password" name="password" id="password"
+                    placeholder="Password">
+                <input class="form-control" formControlName="rePassword" name="rePassword" id="rePassword"
+                    placeholder="Confirm Password">
+                <br>
+                <span class="flex" style="color: white;">
+                    <input type="checkbox" formControlName="checkBox" name="checkBox"> I Agree all terms and
+                    conditions.</span>
+                <input class="form-enter" type="submit" value="Create New Account">
+                <br>
+                <span class="signUp" routerLink="/login">Already have an Account ?</span>
+
+            </form>
+            <br>
+        </div>
     </div>
 </div>

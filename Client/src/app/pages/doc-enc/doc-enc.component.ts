@@ -17,8 +17,8 @@ export class DocEncComponent  implements OnInit {
   imgEncForm: FormGroup;
   userDetilsShow: boolean = false;
   selectedFile : File;
-  userChoice = false;
-  sendMsg: boolean = false;
+  userChoice = true;
+  sendMsg: boolean = true;
   encrptImg: boolean = false;
   userAction: any;
 

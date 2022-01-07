@@ -29,6 +29,8 @@ import { DocDecryptComponent } from './pages/doc-decrypt/doc-decrypt.component';
 import { DocEncComponent } from './pages/doc-enc/doc-enc.component';
 import { DashbComponent } from './pages/dashb/dashb.component';
 import { SupportComponent } from './pages/support/support.component';
+import { ResetPwComponent } from './pages/reset-pw/reset-pw.component'
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
 @NgModule({
    declarations: [
     AppComponent,
@@ -43,7 +45,10 @@ import { SupportComponent } from './pages/support/support.component';
     DocEncComponent,
     DashbComponent,
     SupportComponent,
-    TypingAnimationDirective
+    TypingAnimationDirective,
+    ResetPwComponent,
+    ErrorPageComponent
+
     
     
   ],
@@ -59,7 +64,7 @@ import { SupportComponent } from './pages/support/support.component';
     NgxSpinnerModule,
     PdfViewerModule,
     DataTableModule,
-    DeviceDetectorModule
+    DeviceDetectorModule,
   ],
   providers: [ScriptLoaderService, DataService, DatePipe,HelperService],
   bootstrap: [AppComponent]

@@ -4,9 +4,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 565px;
+    height: 100vh;
     width: 100%;
-    background-image: url('../../../assets/img/loginbg.jpg');
+    background : url('../../../assets/img/dashb.gif') top center;
+    background-size: cover;
+    position: relative;
 
 }
 .login-box{
@@ -88,9 +90,11 @@ text-decoration: underline;
 cursor: pointer;
 }
 
-.navbar{
+.navbar-brand{
+    position: absolute;
+    top: 10px;
+    left: 10px;
     color: white;
-    background-color: #011055;
     font-family: 'Satisfy', cursive;
-    cursor: pointer;
+
 }

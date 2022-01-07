@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HelperService } from '../../_services/helper.service';
 import { DataService } from '../../_services/data.service';
 import { AuthService } from '../../_services/auth.service';
+import { emit } from 'process';
 
 
 @Component({
@@ -38,18 +39,37 @@ export class RegisterComponent implements OnInit {
       userId :controls.userId.value,
       mobileNo : controls.mobileNo.value,
       password : controls.password.value,
-      
-        emailId :controls.emailId.value,
-        role : "user",
-        userType : "user",
-    
+      emailId :controls.emailId.value,
+      role : "user",
+      userType : "user",
     };
+    
+    
+    if(Obj.mobileNo.toString().length != 10){
+      alert("Mobile Number must be of 10 digit only");
+      return;
+    }
+
+    if(this.is_email(this.loginForm.controls.emailId.value) == false){
+      alert("Please check your email is correctling mention");
+      return
+    }if(Obj.password.length < 8 ){
+      alert("Please use a strong password!")
+      return;
+    }
+
     if (this.loginForm.invalid) {
       alert("Invalid input, please fill all the required fields correctly");
       return;
     } else {
+      // return;
       this.authservices.register(Obj);
     }
 
   }
+
+  is_email(email){      
+    var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailReg.test(email); }
+
 }

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HelperService } from '../../_services/helper.service';
 import { AuthService } from '../../_services/auth.service';
 import { DataService } from '../../_services/data.service';
+import { DomSanitizer } from '@angular/platform-browser';
+// import {img} from '../../../assets/img/profile.png'
 @Component({
   selector: 'app-user-detils',
   templateUrl: './user-detils.component.html',
@@ -10,19 +13,22 @@ import { DataService } from '../../_services/data.service';
 export class UserDetilsComponent implements OnInit {
   userNumId: string;
   userDetials :any;
-  userDetialForm: any;
+  userDetialForm: FormGroup;
+  forgotPw = false;
+  profilePic: any;
+  profilePicNull: boolean = false;
 
-  constructor(private authService: AuthService, private dataService: DataService, private formBuilder: FormBuilder) { }
+  constructor( private plugAndPlay: HelperService,
+    private authService: AuthService, private dataService: DataService, 
+    private formBuilder: FormBuilder,
+    private domSanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.userNumId = localStorage.getItem('userNumId_TOKEN');
-    this.dataService.getLogedInUserDetials(this.userNumId).subscribe(data => {
-      this.userDetials = data;
-    });
-
+    
     this.userDetialForm = this.formBuilder.group({
       fName:[''],
-      lName : [''],
+      lName : ['',],
       mobileNo : [''],
       password : [''],
       emailId : [''],
@@ -33,16 +39,66 @@ export class UserDetilsComponent implements OnInit {
       userId : [''],
       userType : [''],
       fatherName : [''],
-      completeName : ['']
+      completeName : [''],
+      userNumId :[''],
+      profile_pic:['']
     });
+
+    this.dataService.getLogedInUserDetials(this.userNumId).subscribe(data => {
+      this.userDetials = data;
+      if(data){
+        this.loadBaseData();
+      
+      }
+    });
+
+  }
+
+  loadBaseData(){
+    if(this.userDetials.profile_pic == null || this.userDetials.profile_pic == undefined || this.userDetials.profile_pic == ""){
+      this.profilePicNull = true;
+    }else{
+      this.dataService.getProfilePic(this.userDetials.userNumId).subscribe(res =>{
+        const objectURL = URL.createObjectURL(res.body);
+        const img = this.domSanitizer.bypassSecurityTrustUrl(objectURL);
+        this.profilePic = img ;
+      });
+    }
+
+    this.userDetialForm = this.formBuilder.group({
+      userNumId:[this.userDetials.userNumId],
+      fName:[this.userDetials.fName],
+      lName : [this.userDetials.lName],
+      mobileNo : [this.userDetials.mobileNo],
+      password : [this.userDetials.password],
+      emailId : [this.userDetials.emailId],
+      state : [this.userDetials.state],
+      city : [this.userDetials.city],
+      isActive : [this.userDetials.isActive],
+      role : [this.userDetials.role],
+      userId : [this.userDetials.userId],
+      userType : [this.userDetials.userType],
+      fatherName : [this.userDetials.fatherName],
+      completeName : [this.userDetials.fName +" "+ this.userDetials.lName],      
+      profile_pic :[this.userDetials.profile_pic]            
+    });
+  }
+  forgotPwf(){
+    this.forgotPw = true;
   }
 
 
   onSubmit(){
+    if(!this.userDetialForm.valid){
+      alert("Please fill all the fields")
+      return
+
+    }
     var controls = this.userDetialForm.controls;
     var Obj = {
+      userNumId:controls.userNumId.value,
       fName:controls.fName.value,
-      lName : controls.fName.value,
+      lName : controls.lName.value,
       mobileNo : controls.mobileNo.value,
       password : controls.password.value,
       emailId : controls.emailId.value,
@@ -53,10 +109,32 @@ export class UserDetilsComponent implements OnInit {
       userId : controls.userId.value,
       userType : controls.userType.value,
       fatherName : controls.fatherName.value,
-      completeName : controls.completeName.value
+      completeName : controls.completeName.value,
+      profile_pic:controls.profile_pic.value,
     };
+    this.dataService.updteProfile(Obj).subscribe(res =>{
+      if(res){
+        alert("Profile Saved succefully ");
+        this.ngOnInit();
+      }
+    });
+  }  
 
-    
+
+  setProfilePic(selectedFile: File){
+
+    var data = new FormData();
+    data.append("userNumId", this.userDetials.userNumId);
+    data.append("file", selectedFile[0]);
+  
+  console.log(selectedFile[0].name);
+    this.dataService.setProfilePic(data).subscribe(res=>{
+      if(res){
+        alert("profile succefully updated");
+        this.ngOnInit();
+      }
+    })
   }
+
 
 }

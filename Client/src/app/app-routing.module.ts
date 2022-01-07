@@ -26,6 +26,8 @@ import { DocEncComponent } from './pages/doc-enc/doc-enc.component';
 import { DocDecryptComponent } from './pages/doc-decrypt/doc-decrypt.component';
 import { DashbComponent } from './pages/dashb/dashb.component';
 import { SupportComponent } from './pages/support/support.component';
+import { ResetPwComponent } from './pages/reset-pw/reset-pw.component';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
 //import { FormsModule } from '@angular/forms';
 //import { ReactiveFormsModule } from '@angular/forms';
 
@@ -34,6 +36,11 @@ const routes: Routes = [
     {path:'dashb',component:DashbComponent,canActivate:[AuthGuard]},
     {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
     {path: 'register', component: RegisterComponent, canActivate: [AuthGuard]},
+    {
+        path :"resetPw",
+        component:ResetPwComponent,
+        canActivate:[AuthGuard]
+    },
     {
         "path": "",
         "component": LayoutComponent,
@@ -128,14 +135,16 @@ const routes: Routes = [
                 path :"support",
                 component:SupportComponent,
                 canActivate:[ComponentGuard]
-            }
+            },
+            
+            
         ]},
    
     {
-        "path": "**",
-        "redirectTo": "error_404",
-        "pathMatch": "full"
+         path: '**', pathMatch: 'full', 
+        component: ErrorPageComponent ,
     },
+
 ];
 
 @NgModule({

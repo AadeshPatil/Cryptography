@@ -29,41 +29,8 @@ public class Users {
 	String completeName;
 	@JsonIgnore
 	String token;
-	
-	public Users(Long userNumId, String fName, String lName, Long mobileNo, String password, String emailId,
-			String state, String city, String isActive, String role, String userId, String userType, String fatherName,
-			String completeName, String token) {
-		super();
-		this.userNumId = userNumId;
-		this.fName = fName;
-		this.lName = lName;
-		this.mobileNo = mobileNo;
-		this.password = password;
-		this.emailId = emailId;
-		this.state = state;
-		this.city = city;
-		this.isActive = isActive;
-		this.role = role;
-		this.userId = userId;
-		this.userType = userType;
-		this.fatherName = fatherName;
-		this.completeName = completeName;
-		this.token = token;
-	}
-	@Override
-	public String toString() {
-		return "Users [userNumId=" + userNumId + ", fName=" + fName + ", lName=" + lName + ", mobileNo=" + mobileNo
-				+ ", password=" + password + ", emailId=" + emailId + ", state=" + state + ", city=" + city
-				+ ", isActive=" + isActive + ", role=" + role + ", userId=" + userId + ", userType=" + userType
-				+ ", fatherName=" + fatherName + ", completeName=" + completeName + ", token=" + token
-				+ ", getUserNumId()=" + getUserNumId() + ", getfName()=" + getfName() + ", getlName()=" + getlName()
-				+ ", getMobileNo()=" + getMobileNo() + ", getPassword()=" + getPassword() + ", getEmailId()="
-				+ getEmailId() + ", getState()=" + getState() + ", getCity()=" + getCity() + ", getIsActive()="
-				+ getIsActive() + ", getRole()=" + getRole() + ", getUserId()=" + getUserId() + ", getUserType()="
-				+ getUserType() + ", getFatherName()=" + getFatherName() + ", getCompleteName()=" + getCompleteName()
-				+ ", getToken()=" + getToken() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
-	}
+	Long otp;
+	String profile_pic;
 	public Long getUserNumId() {
 		return userNumId;
 	}
@@ -154,9 +121,45 @@ public class Users {
 	public void setToken(String token) {
 		this.token = token;
 	}
+	public Long getOtp() {
+		return otp;
+	}
+	public void setOtp(Long otp) {
+		this.otp = otp;
+	}
+	public String getProfile_pic() {
+		return profile_pic;
+	}
+	public void setProfile_pic(String profile_pic) {
+		this.profile_pic = profile_pic;
+	}
 
+	public Users(Long userNumId, String fName, String lName, Long mobileNo, String password, String emailId,
+			String state, String city, String isActive, String role, String userId, String userType, String fatherName,
+			String completeName, String token, Long otp, String profile_pic) {
+		super();
+		this.userNumId = userNumId;
+		this.fName = fName;
+		this.lName = lName;
+		this.mobileNo = mobileNo;
+		this.password = password;
+		this.emailId = emailId;
+		this.state = state;
+		this.city = city;
+		this.isActive = isActive;
+		this.role = role;
+		this.userId = userId;
+		this.userType = userType;
+		this.fatherName = fatherName;
+		this.completeName = completeName;
+		this.token = token;
+		this.otp = otp;
+		this.profile_pic = profile_pic;
+	}
 	public Users() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+
 }

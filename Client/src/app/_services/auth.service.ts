@@ -43,17 +43,18 @@ export class AuthService {
     }));
   }
 
-  register(user){
-    
- let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'X-Auth-Token', }) }
-    return this.http.post(`${config.apiUrl}/users/signUp`,user,httpOptions).subscribe(res => {
+  register(user) {
+
+    let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'X-Auth-Token', }) }
+    this.http.post(`${config.apiUrl}/users/signUp`, user, httpOptions).subscribe(res => {
       console.log(res);
-      if(res){
+      if (res) {
         alert("Succefully created an account, please Login with your creads!");
         this.router.navigate(['/login']);
 
       }
-    })  }
+    })
+  }
 
   logout() {
         this.doLogoutUser();
@@ -163,7 +164,7 @@ export class AuthService {
     return this.http.post(`${config.apiUrl}/role/fetchpermNmByRoleNm/${roleName}`, {});
   }
   fetchUserDetails(userId){
-    return this.http.post(`${config.apiUrl}//users/fetchUId/${userId}`, {});
+    return this.http.post(`${config.apiUrl}/users/fetchUId/${userId}`, {});
   }
 
   setDcrptMsg(data){
@@ -197,6 +198,24 @@ export class AuthService {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  sendOTP(userID){
+    let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'X-Auth-Token', }) }
+    return this.http.post(`${config.apiUrl}/users/sendOTPThroughEmail`,userID,httpOptions);
+  }
+  submitOtp(otp){
+    return this.http.post(`${config.apiUrl}/users/checkOtp`,otp, { observe : 'response'  });
+  }
+  getUser(user){
+    let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'X-Auth-Token', }) }
+    return this.http.post(`${config.apiUrl}/users/fetchUser/${user}`,httpOptions,{});
+  }
+
+  resetPw(user) {
+
+    let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'X-Auth-Token', }) }
+    return this.http.post(`${config.apiUrl}/users/UpdPwd`, user, httpOptions);
   }
 
 

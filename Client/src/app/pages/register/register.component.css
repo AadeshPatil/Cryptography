@@ -4,9 +4,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 620px;
+    height: 100vh;
     width: 100%;
-    background-image: url('../../../assets/img/loginbg.jpg');
+    background-image: url('../../../assets/img/dashb.gif');
 
 }
 .login-box{

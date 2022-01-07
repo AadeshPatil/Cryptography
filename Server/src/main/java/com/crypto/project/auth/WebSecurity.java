@@ -61,6 +61,10 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     	 web
          .ignoring()
          .antMatchers(HttpMethod.POST,"/users/signUp")
+         .antMatchers(HttpMethod.POST,"/users/sendOTPThroughEmail")
+         .antMatchers(HttpMethod.POST,"/users/fetchUser/{userId}")
+         .antMatchers(HttpMethod.GET,"/users/checkOtp")
+         .antMatchers(HttpMethod.POST,"/users/UpdPwd")
          .antMatchers(AUTH_WHITELIST);
     }
     

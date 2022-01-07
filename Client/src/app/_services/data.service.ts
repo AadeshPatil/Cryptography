@@ -25,6 +25,9 @@ export class DataService {
   getUserDetails(userId){
     return this.http.get(`${config.apiUrl}/users/fetchUA/${userId}`, {});
   }
+  getUserNumId(userId){
+    return this.http.get(`${config.apiUrl}/users/fetchUser/${userId}`, {});
+  }
   encText(Obj){
     return this.http.post(`${config.apiUrl}/txt/encTxt`, Obj, { observe: 'response' });
   }
@@ -63,4 +66,30 @@ export class DataService {
     let fileDownloadHttpoOption = { 'Authorization': 'X-Auth-Token' }
     return this.http.post(`${config.apiUrl}/img/dcrptMsgImg`,img,{'headers': fileDownloadHttpoOption, responseType: 'blob', observe: "response" });
   }
+  sendOTP(userID){
+    return this.http.post(`${config.apiUrl}/users/sendOTPThroughEmail`,userID,{ observe: 'response' });
+  }
+
+  submitOtp(otp){
+    return this.http.post(`${config.apiUrl}/users/checkOtp`,otp, { observe : 'response'  });
+
+  }
+  resetPw(user){
+    return this.http.post(`${config.apiUrl}/users/UpdPwd`,user,{ observe: 'response' });
+
+  }
+  updteProfile(user){
+    return this.http.post(`${config.apiUrl}/users/updateUser`,user,{ observe: 'response' });
+
+  }
+  setProfilePic(file){
+    return this.http.post(`${config.apiUrl}/users/setProfilePic`,file,{ observe: 'response' });
+
+  }
+
+    getProfilePic(userNumId){
+    let fileDownloadHttpoOption = { 'Authorization': 'X-Auth-Token' }
+    return this.http.get(`${config.apiUrl}/users/getProfilePic/${userNumId}`,{'headers': fileDownloadHttpoOption, responseType: 'blob', observe: "response" });
+  }
+
 }

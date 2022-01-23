@@ -65,6 +65,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
          .antMatchers(HttpMethod.POST,"/users/fetchUser/{userId}")
          .antMatchers(HttpMethod.GET,"/users/checkOtp")
          .antMatchers(HttpMethod.POST,"/users/UpdPwd")
+         .antMatchers(HttpMethod.POST,"/support/getInqury")
+         
+         
          .antMatchers(AUTH_WHITELIST);
     }
     

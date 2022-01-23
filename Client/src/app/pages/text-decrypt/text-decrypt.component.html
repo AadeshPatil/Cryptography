@@ -8,9 +8,9 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <input type="text" formControlName="key" name="key" class="form-control" placeholder="Secure Key *"
-                        value="" />
+                        [value]="SecuredKey" />
                 </div>
-                <button type="submit" class="btn btn-primary">Drcrypt Text</button>
+                <button type="submit" class="btn btn-warning">Drcrypt Text</button>
             </div>
             <div class="col-md-6">
                 <div class="form-group" *ngIf="showMsg == true">

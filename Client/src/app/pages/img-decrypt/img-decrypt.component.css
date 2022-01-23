@@ -5,7 +5,7 @@
     backdrop-filter: blur(6.5px);
     -webkit-backdrop-filter: blur(6.5px);
     border: 1px solid rgba(214, 208, 208, 0.3);
-    height: 390px;
+    height: 420px;
     width:800px;
     color: white;
     margin-top: 30px;
@@ -17,7 +17,7 @@ section.cover{
       border-bottom: 50px solid transparent;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    height: 500px;
+    /* height: 500px; */
   }
 .contact-form .form-control{
     border-radius:1rem;

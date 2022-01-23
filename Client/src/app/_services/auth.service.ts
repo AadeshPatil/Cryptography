@@ -166,6 +166,16 @@ export class AuthService {
   fetchUserDetails(userId){
     return this.http.post(`${config.apiUrl}/users/fetchUId/${userId}`, {});
   }
+  getInqury(Obj){
+    let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'X-Auth-Token', }) }
+    return this.http.post(`${config.apiUrl}/support/getInqury`,Obj,httpOptions);
+
+  } 
+  getMsgInqury(Obj){
+    let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'X-Auth-Token', }) }
+    return this.http.post(`${config.apiUrl}/support/getSupport`,Obj,httpOptions);
+
+  }
 
   setDcrptMsg(data){
     this.dcrptMsg = data;

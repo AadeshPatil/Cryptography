@@ -1,8 +1,7 @@
 <div class="page-brand">
     <a class="link" routerLink="/index">
         <span class="brand">
-            <!-- <img src="../../../assets/img/logo2.jpeg" width="80px"> -->
-            <h5 class="headline">Secured World</h5>
+            <img src="../../../assets/img/logo2.jpeg">
         </span>
       
     </a>
@@ -13,12 +12,13 @@
         <li>
             <a class="nav-link sidebar-toggler js-sidebar-toggler"><i class="ti-menu"></i></a>
         </li>
-        <li></li>
+        <li>
+        </li>
         <li>
         </li>
          
     </ul>
-    <b>Choosing a Hard to get and easy to rember password is important</b>
+    <!-- <b>Choosing a Hard to get and easy to rember password is important</b> -->
 
     <ul class="nav navbar-toolbar">
         <li class="dropdown dropdown-user">
@@ -32,7 +32,7 @@
                     <img *ngIf="showAlertIcon == true" src="../../../assets/img/notification.png" alt="" style="width: 20px;">
                     Notifications</a>
                 <a class="dropdown-item" routerLink="/user" routerLinkActive="active"><i class="fa fa-user"></i>Profile</a>
-                <a class="dropdown-item" href="profile.html"><i class="fa fa-cog"></i>Settings</a>
+                <!-- <a class="dropdown-item" href="profile.html"><i class="fa fa-cog"></i>Settings</a> -->
                 <a class="dropdown-item" routerLink="/support"><i class="fa fa-support"></i>Support</a>
                 <li class="dropdown-divider"></li>
                 <a class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"></i>Logout</a>

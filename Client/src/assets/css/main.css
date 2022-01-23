@@ -1743,6 +1743,7 @@ body.fullscreen-mode {
   .form-control:focus {
     border-color: #23B7E5; }
 
+
 .input-rounded {
   -webkit-border-radius: 200px;
   border-radius: 200px; }
@@ -2864,7 +2865,7 @@ a.text-danger:hover, a.text-danger:focus {
       display: -webkit-inline-box;
       display: -webkit-inline-flex;
       display: -ms-inline-flexbox;
-      margin: 50px; }
+       }
     .header .page-brand .brand-mini {
       display: none; }
   .header .navbar-toolbar {
@@ -3131,7 +3132,7 @@ body.fixed-layout.sidebar-mini .page-sidebar, body.fixed-layout.sidebar-mini .pa
 body.fixed-layout.sidebar-mini .content-wrapper {
   margin-left: 0; }
 
-.page-footer {
+/* .page-footer {
   position: fixed;
     left: 220px;
     bottom: 0;
@@ -3140,7 +3141,7 @@ body.fixed-layout.sidebar-mini .content-wrapper {
     justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
-    background-color: #fff; }
+    background-color: #fff; } */
 
 .page-wrapper {
   width: 100%;
@@ -3155,7 +3156,7 @@ body.fixed-layout.sidebar-mini .content-wrapper {
   background-color: #fff;
   margin-left: 220px;
   position: relative;
-  padding: 0 15px 60px 15px;
+  padding: 0 15px 0px 15px;
   -webkit-transition: margin .2s ease-in-out;
   -o-transition: margin .2s ease-in-out;
   transition: margin .2s ease-in-out;

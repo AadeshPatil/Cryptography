@@ -4,6 +4,7 @@ import { file } from 'jszip';
 import * as moment from 'moment';
 import { HelperService } from '../../_services/helper.service';
 import { DataService } from '../../_services/data.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-img-enc',
@@ -20,7 +21,7 @@ export class ImgEncComponent implements OnInit {
   encrptImg: boolean = false;
   userAction: any;
 
-  constructor(private dataService: DataService, private formBuilder: FormBuilder ,private plugAndPlay:HelperService) { }
+  constructor(private dataService: DataService,private spiner: NgxSpinnerService, private formBuilder: FormBuilder ,private plugAndPlay:HelperService) { }
 
   ngOnInit() {
     this.imgEncForm = this.formBuilder.group({
@@ -50,6 +51,7 @@ export class ImgEncComponent implements OnInit {
   }
 
   onSubmit() {
+    this.spiner.show();
     let currentDateTime = moment().format("MM/DD/YYYY hh:mm:ss");
 
     var controls = this.imgEncForm.controls;
@@ -62,6 +64,7 @@ export class ImgEncComponent implements OnInit {
     };
     if (this.imgEncForm.invalid) {
       alert("Invalid input, please fill all the required fields correctly");
+      this.spiner.hide();
       return;
     } else {
       this.dataService.getUserDetails(Obj.userId).subscribe(data => {
@@ -69,13 +72,16 @@ export class ImgEncComponent implements OnInit {
         if (this.userDetils.length == 0) {
           this.userDetilsShow = false;
           alert("Please Enter Valid User ID");
+          this.spiner.hide();
         } else {
           if(this.userAction == "sendMsg"){
             if (confirm("Are you sure you want to send the message to " + Obj.userId + " .")) {
                this.sendEncData(this.selectedFile,Obj.key,Obj.senderName,Obj.userId,Obj.time,"img");
+               this.spiner.hide();
             }
           }else{
             this.encData(this.selectedFile,Obj.key,Obj.senderName);
+            this.spiner.hide();
 
           }
         }
@@ -92,10 +98,12 @@ export class ImgEncComponent implements OnInit {
     data.append("fileType",filetype);
     this.dataService.sendEncImage(data).subscribe(res => {
       if(res){
-        alert("Message Send Succefully !")
+        alert("Message Send Succefully !");
+        this.spiner.hide();
       } 
     }, error => {
       console.log(error);
+      this.spiner.hide();
     });
   }
 
@@ -105,7 +113,6 @@ export class ImgEncComponent implements OnInit {
   }
 
   encData(fileInput,key,senderName){
-
     var data = new FormData();
     data.append("key", key);
     data.append("sender", senderName);
@@ -113,9 +120,13 @@ export class ImgEncComponent implements OnInit {
     this.dataService.encImage(data).subscribe(res => {
       if(res){
         this.plugAndPlay.downloadRestFile(res);
+        this.spiner.hide();
+
       } 
     }, error => {
       console.log(error);
+      this.spiner.hide();
+
     });
   }
   

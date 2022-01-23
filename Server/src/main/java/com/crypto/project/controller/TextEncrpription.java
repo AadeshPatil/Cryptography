@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.request.RequestContextHolder;
 
 import com.crypto.project.helpers.GetIp;
@@ -22,6 +23,7 @@ import com.crypto.project.model.Users;
 import com.crypto.project.model.EncData;
 import com.crypto.project.model.TextEncDcrtModel;
 import com.crypto.project.service.EncDataStore;
+import com.crypto.project.service.RequestService;
 import com.crypto.project.service.UsersRepository;
 
 
@@ -38,9 +40,7 @@ public class TextEncrpription {
 	private HttpServletRequest request;
 	
     @Autowired
-    public void setRequest(HttpServletRequest request) {
-        this.request = request;
-    }
+    private RequestService ipLoc;
 
 
 	
@@ -73,13 +73,28 @@ public class TextEncrpription {
 	}
 	
 	@PostMapping("/dcrtTxt")
-	public ResponseEntity<Object> dcrptTxt(@RequestBody TextEncDcrtModel txtObj) throws NoSuchElementException {
+	public ResponseEntity<Object> dcrptTxt(@RequestBody TextEncDcrtModel txtObj,HttpServletRequest request) throws NoSuchElementException {
 		try {
+			Optional<EncData> data = EncDStored.findById(txtObj.getId());
+			
 			String EncTxt = TextHelper.decrypt(txtObj.getText(), txtObj.getKey());
-			System.out.println(EncTxt);
+//			System.out.println(EncTxt);
 			HashMap<String, String> map = new HashMap<>();
 		    map.put("txt", EncTxt);
-        	return new ResponseEntity<>(map, HttpStatus.OK);
+		   
+		    try {
+		    	String userIp = ipLoc.getClientIp(request);
+		    	System.out.println(userIp);
+		    	map.put("ip",userIp);
+		    	data.get().setReciverLocation(userIp);
+		    	EncDStored.save(data.get());
+		    	getReciverDetaills("103.115.203.115");
+		    	
+			} catch (Exception e) {
+				e.getMessage();
+			}
+				// TODO: handle exception
+		    return new ResponseEntity<>(map, HttpStatus.OK);
 			} catch (Exception e) {
 			// TODO: handle exception
 				e.getMessage();
@@ -89,6 +104,17 @@ public class TextEncrpription {
 			
 	}
 	
+	
+	@GetMapping("/ip")
+	public Object[] getReciverDetaills(@RequestBody String ip) {
+		
+		String url ="https://ip-api.com/json/"+ip;
+		RestTemplate restTem = new RestTemplate();
+		
+		Object[] reciverDetails = restTem.getForObject(url, Object[].class);
+		System.out.println(reciverDetails);
+		return reciverDetails;
+	}
 
 	
 }

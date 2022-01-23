@@ -13,7 +13,7 @@ import com.crypto.project.service.RequestService;
 @Service
 public class RequestServiceImpl implements RequestService {
 
-	private final String LOCALHOST_IPV4 = "0.0.0.1";
+	private final String LOCALHOST_IPV4 = "127.0.0.1";
 	private final String LOCALHOST_IPV6 = "0:0:0:0:0:0:0:1";
 	
 	@Override

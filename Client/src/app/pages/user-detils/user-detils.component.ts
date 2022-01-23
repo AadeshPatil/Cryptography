@@ -5,6 +5,8 @@ import { AuthService } from '../../_services/auth.service';
 import { DataService } from '../../_services/data.service';
 import { DomSanitizer } from '@angular/platform-browser';
 // import {img} from '../../../assets/img/profile.png'
+import { NgxSpinnerService } from "ngx-spinner";
+
 @Component({
   selector: 'app-user-detils',
   templateUrl: './user-detils.component.html',
@@ -21,7 +23,7 @@ export class UserDetilsComponent implements OnInit {
   constructor( private plugAndPlay: HelperService,
     private authService: AuthService, private dataService: DataService, 
     private formBuilder: FormBuilder,
-    private domSanitizer: DomSanitizer) { }
+    private domSanitizer: DomSanitizer,private spiner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.userNumId = localStorage.getItem('userNumId_TOKEN');
@@ -89,11 +91,7 @@ export class UserDetilsComponent implements OnInit {
 
 
   onSubmit(){
-    if(!this.userDetialForm.valid){
-      alert("Please fill all the fields")
-      return
-
-    }
+    this.spiner.show();
     var controls = this.userDetialForm.controls;
     var Obj = {
       userNumId:controls.userNumId.value,
@@ -112,17 +110,44 @@ export class UserDetilsComponent implements OnInit {
       completeName : controls.completeName.value,
       profile_pic:controls.profile_pic.value,
     };
-    this.dataService.updteProfile(Obj).subscribe(res =>{
-      if(res){
-        alert("Profile Saved succefully ");
-        this.ngOnInit();
-      }
-    });
+
+
+    if(Obj.mobileNo.toString().length != 10){
+      alert("Mobile Number must be of 10 digit only");
+      this.spiner.hide();
+      return;
+    }
+    if(this.is_email(Obj.emailId) == false){
+      alert("Please check your email is correctling mention");
+      this.spiner.hide();
+      return
+    }if(Obj.password.length < 8 ){
+      alert("Please use a strong password!");
+      this.spiner.hide();
+      return;
+    }
+
+    if(!this.userDetialForm.valid){
+      alert("Please fill all the fields");
+      this.spiner.hide();
+      return;
+    } else {
+      // return;
+      this.dataService.updteProfile(Obj).subscribe(res =>{
+        if(res){
+          alert("Profile Updated succefully ");
+          this.spiner.hide();
+          this.ngOnInit();
+        }
+      });
+    }
+
+    
   }  
 
 
   setProfilePic(selectedFile: File){
-
+    this.spiner.show();
     var data = new FormData();
     data.append("userNumId", this.userDetials.userNumId);
     data.append("file", selectedFile[0]);
@@ -131,10 +156,14 @@ export class UserDetilsComponent implements OnInit {
     this.dataService.setProfilePic(data).subscribe(res=>{
       if(res){
         alert("profile succefully updated");
+        this.spiner.hide();
         this.ngOnInit();
       }
     })
   }
 
+  is_email(email){      
+    var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailReg.test(email); }
 
 }

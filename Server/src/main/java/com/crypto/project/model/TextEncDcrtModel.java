@@ -1,7 +1,7 @@
 package com.crypto.project.model;
 
 public class TextEncDcrtModel {
-	
+		private long id;
 		private String userId;
 		private String text;
 		private String key;
@@ -44,6 +44,12 @@ public class TextEncDcrtModel {
 		public void setReciverLocation(String reciverLocation) {
 			this.reciverLocation = reciverLocation;
 		}
+		public long getId() {
+			return id;
+		}
+		public void setId(long id) {
+			this.id = id;
+		}
 		@Override
 		public int hashCode() {
 			// TODO Auto-generated method stub
@@ -69,9 +75,11 @@ public class TextEncDcrtModel {
 			// TODO Auto-generated method stub
 			super.finalize();
 		}
-		public TextEncDcrtModel(String userId, String text, String key, String senderName, String time,
+		
+		public TextEncDcrtModel(long id, String userId, String text, String key, String senderName, String time,
 				String reciverLocation) {
 			super();
+			this.id = id;
 			this.userId = userId;
 			this.text = text;
 			this.key = key;

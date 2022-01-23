@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import * as $ from "jquery";
 
-declare  var jQuery:  any;
+declare  var $:  any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,11 +12,12 @@ declare  var jQuery:  any;
 export class HomeComponent implements OnInit {
   constructor() { }
   ngOnInit() {
+	$('body').toggleClass('sidebar-mini');
 
+  
     }
 
-    
-    
-
-      
-}
+  }
+    $('.js-sidebar-toggler').click(function() {
+      $('body').toggleClass('sidebar-mini');
+  });

@@ -18,8 +18,8 @@ body {
   }
 
   .logo{
-color: #fff;
-background: #000;
+    color: #fff;
+background: #001525;
   }
   
   /*--------------------------------------------------------------
@@ -1353,4 +1353,15 @@ section {
   text-align: center;
   font-size: 13px;
   color: #fff;
+}
+
+.nabare{
+  background-color: #001525;
+}
+
+
+.form-control{
+  /* width: 350px; */
+  border-radius: 15px;
+  border: 2px solid #d9ff00;
 }

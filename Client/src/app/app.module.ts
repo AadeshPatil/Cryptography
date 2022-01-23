@@ -9,7 +9,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import {DataTableModule} from "angular-6-datatable";
 import { DeviceDetectorModule } from 'ngx-device-detector';
-
+// import { ClipboardModule } from 'ngx-clipboard';
 import { AppComponent } from './/app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { LayoutModule } from './/layouts/layout.module';
@@ -31,6 +31,7 @@ import { DashbComponent } from './pages/dashb/dashb.component';
 import { SupportComponent } from './pages/support/support.component';
 import { ResetPwComponent } from './pages/reset-pw/reset-pw.component'
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { GenKeyComponent } from './pages/gen-key/gen-key.component';
 @NgModule({
    declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
     SupportComponent,
     TypingAnimationDirective,
     ResetPwComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    GenKeyComponent
 
     
     
@@ -65,6 +67,7 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
     PdfViewerModule,
     DataTableModule,
     DeviceDetectorModule,
+    
   ],
   providers: [ScriptLoaderService, DataService, DatePipe,HelperService],
   bootstrap: [AppComponent]

@@ -17,7 +17,7 @@ section.cover{
       border-bottom: 50px solid transparent;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    height: 500px;
+    /* height: 500px; */
   }
 .contact-form .form-control{
     border-radius:1rem;
@@ -70,7 +70,7 @@ section.cover{
     border-radius: 25px;
     border: 2px solid #73AD21;
     padding: 10px;
-    width: 250px;
+    width: 300px;
     height: 100px;
   }
   .form-control {
@@ -87,4 +87,40 @@ section.cover{
     border: 1px solid rgb(0 0 0 / 47%);
     border-radius: .25rem;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+h3{
+    color: white;
+    font-weight: bolder;
+    font-family: cursive;
+    text-decoration: none;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+.waviy {
+    /* display: flex; */
+    text-align: center;
+  /* position: relative; */
+  -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0,0,0,.2));
+  font-size: 25px;
+}
+.waviy span {
+
+margin-top: 10px;
+  font-family: 'Alfa Slab One', cursive;
+  /* position: relative; */
+  display: inline-block;
+  color: #fff;
+  text-transform: uppercase;
+  animation: waviy 1s infinite;
+  animation-delay: calc(.1s * var(--i));
+  
+}
+@keyframes waviy {
+  0%,40%,100% {
+    transform: translateY(0)
+  }
+  20% {
+    transform: translateY(-20px)
+  }
 }

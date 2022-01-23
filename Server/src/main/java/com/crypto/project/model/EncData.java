@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Txt_Enc_data")
+@Table(name="Enc_data")
 public class EncData {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

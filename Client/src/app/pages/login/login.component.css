@@ -9,6 +9,7 @@
     background : url('../../../assets/img/dashb.gif') top center;
     background-size: cover;
     position: relative;
+    cursor: pointer;
 
 }
 .login-box{

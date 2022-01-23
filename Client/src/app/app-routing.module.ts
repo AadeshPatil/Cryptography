@@ -28,6 +28,7 @@ import { DashbComponent } from './pages/dashb/dashb.component';
 import { SupportComponent } from './pages/support/support.component';
 import { ResetPwComponent } from './pages/reset-pw/reset-pw.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { GenKeyComponent } from './pages/gen-key/gen-key.component';
 //import { FormsModule } from '@angular/forms';
 //import { ReactiveFormsModule } from '@angular/forms';
 
@@ -134,6 +135,11 @@ const routes: Routes = [
             {
                 path :"support",
                 component:SupportComponent,
+                canActivate:[ComponentGuard]
+            },
+            {
+                path :"gen-key",
+                component: GenKeyComponent,
                 canActivate:[ComponentGuard]
             },
             

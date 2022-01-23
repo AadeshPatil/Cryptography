@@ -15,6 +15,8 @@ export class Helpers {
 
 	static bodyClass(Class) {
 		$('body').attr('class', Class);
+		// $('body').toggleClass('sidebar-mini');
+	    
 	}
 
 	static initLayout() {

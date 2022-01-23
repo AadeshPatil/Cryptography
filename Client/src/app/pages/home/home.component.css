@@ -1,12 +1,14 @@
 
 section.cover{
-  margin-top: 20px; ;
+  margin-top: 20px;
   background: linear-gradient(45deg,#151680 50%,#261681 50%);
   padding: 20px 10%;
 	border-bottom: 50px solid transparent;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  height: 500px;
+  height: 540px;
+  margin-bottom: 0px !important;
+
 }
 section nav{
   display: flex;
@@ -53,7 +55,7 @@ section.cover .content .highlight{
 }
 section.cover .content .card{
   position: absolute;
-  bottom: 10px;
+  /* bottom: 10px; */
   right: 0;
   width: 140px;
   padding: 20px 40px;
@@ -99,5 +101,35 @@ section.cover .content .card:hover{
   }
   .e2e{
     display: none;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+.waviy {
+    /* display: flex; */
+    /* text-align: center; */
+  /* position: relative; */
+  -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0,0,0,.2));
+  font-size: 35px;
+}
+.waviy span {
+
+margin-top: 10px;
+  font-family: 'Alfa Slab One', cursive;
+  /* position: relative; */
+  display: inline-block;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  animation: waviy 1s infinite;
+  animation-delay: calc(.1s * var(--i));
+  
+}
+@keyframes waviy {
+  0%,40%,100% {
+    transform: translateY(0)
+  }
+  20% {
+    transform: translateY(-20px)
   }
 }

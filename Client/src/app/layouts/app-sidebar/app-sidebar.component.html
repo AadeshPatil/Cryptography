@@ -25,9 +25,10 @@
                 <div>
                     <li>
                         <a routerLink="/textEnc" routerLinkActive="active"><i
-                                class="sidebar-item-icon fa fa-file-text"></i>
+                                class="sidebar-item-icon fa fa-lock"></i>
                             <span class="nav-label">Text Encryption</span>
                         </a>
+
                     </li>
                 </div>
             </ul>
@@ -39,7 +40,7 @@
                 <div>
                     <li>
                         <a routerLink="/imgEnc" routerLinkActive="active"><i
-                                class="sidebar-item-icon fa fa-picture-o"></i>
+                                class="sidebar-item-icon fa fa-lock"></i>
                             <span class="nav-label">Image Encryption</span>
                         </a>
                     </li>
@@ -47,7 +48,7 @@
                 <div>
                     <li>
                         <a routerLink="/imgDcrpt" routerLinkActive="active"><i
-                                class="sidebar-item-icon fa fa-picture-o"></i>
+                                class="sidebar-item-icon fa fa-unlock"></i>
                             <span class="nav-label">Image Decryption</span>
                         </a>
                     </li>
@@ -61,14 +62,14 @@
             <ul class="nav-2-level collapse" routerLinkActive="in">
                 <div>
                     <li>
-                        <a routerLink="/docEnc" routerLinkActive="active"><i class="sidebar-item-icon fa fa-file"></i>
+                        <a routerLink="/docEnc" routerLinkActive="active"><i class="sidebar-item-icon fa fa-lock"></i>
                             <span class="nav-label">Documents Encryption</span>
                         </a>
                     </li>
                 </div>
                 <div>
                     <li>
-                        <a routerLink="/docDcrpt" routerLinkActive="active"><i class="sidebar-item-icon fa fa-file"></i>
+                        <a routerLink="/docDcrpt" routerLinkActive="active"><i class="sidebar-item-icon fa fa-unlock"></i>
                             <span class="nav-label">Documents Decryption</span>
                         </a>
                     </li>
@@ -76,29 +77,13 @@
 
             </ul>
         </li>
-        <!-- <li routerLinkActive="active">
-            <a href="javascript:;"><i class="sidebar-item-icon fa fa-volume-up"></i>
-                <span class="nav-label">Audio</span><i class="fa fa-angle-left arrow"></i></a>
-            <ul class="nav-2-level collapse" routerLinkActive="in">
-                <div>
-                    <li>
-                        <a routerLink="#" routerLinkActive="active"><i
-                                class="sidebar-item-icon fa fa-volume-up"></i>
-                            <span class="nav-label">Audio Encryption</span>
-                        </a>
-                    </li>
-                </div>
-                <div>
-                    <li>
-                        <a routerLink="#" routerLinkActive="active"><i
-                                class="sidebar-item-icon fa fa-volume-up"></i>
-                            <span class="nav-label">Audio Decryption</span>
-                        </a>
-                    </li>
-                </div>
-
-            </ul>
+        <li>
+            <a routerLink="/gen-key" routerLinkActive="active"><i
+                    class="sidebar-item-icon fa fa-key"></i>
+                <span class="nav-label">Genrate Secure Key</span>
+            </a>
         </li>
+        <!--
         <li routerLinkActive="active">
             <a href="javascript:;"><i class="sidebar-item-icon fa fa-video-camera"></i>
                 <span class="nav-label">Video</span><i class="fa fa-angle-left arrow"></i></a>

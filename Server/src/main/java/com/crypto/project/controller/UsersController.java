@@ -211,30 +211,40 @@ public class UsersController {
 	public ResponseEntity<Object> setImg(@RequestParam("file") MultipartFile profilePic ,@RequestParam("userNumId") Long userNumId) throws IllegalStateException, IOException {
 		Users user = userRepository.findByUserNumId(userNumId);
 		try {
-			File file1 = ImgEncHelper.convert(profilePic);
-			byte[] content = ImgEncHelper.getFile(file1);
-			System.out.println(content);
-			String fileName = file1.getName();
 			
-			String filePath = "E:\\CryptoGraphy_project\\EncData\\"+user.getUserId();
-	    	File f = new File(filePath);
-	    	f.mkdir();
-	    	
-	        FileOutputStream fos = new FileOutputStream(filePath+"\\"+fileName);
-	        fos.write(content);
-	        fos.close();
-	        File encrtfile = new File(filePath+"\\"+fileName);
-	        user.setUserNumId(userNumId);
-	        user.setProfile_pic(encrtfile.getAbsolutePath());
-	        userRepository.save(user);
-			return ResponseEntity.ok().build();
+			File exFile = new File(user.getProfile_pic());
+			
+			if(exFile.delete()) {
+				
+				File file1 = ImgEncHelper.convert(profilePic);
+				byte[] content = ImgEncHelper.getFile(file1);
+				System.out.println(content);
+				String fileName = file1.getName();
+				
+				String filePath = "E:\\CryptoGraphy_project\\EncData\\"+user.getUserId();
+		    	File f = new File(filePath);
+		    	f.mkdir();
+		    	
+		        FileOutputStream fos = new FileOutputStream(filePath+"\\"+fileName);
+		        fos.write(content);
+		        fos.close();
+		        File encrtfile = new File(filePath+"\\"+fileName);
+		        user.setUserNumId(userNumId);
+		        user.setProfile_pic(encrtfile.getAbsolutePath());
+		        userRepository.save(user);
+				return ResponseEntity.ok().build();
+
+			}else {
+				return ResponseEntity.ok().build();
+			}
+			
 
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.getMessage();
 		}
-		
 		return ResponseEntity.ok().build();
+		
 	}
 	
 	@GetMapping("/getProfilePic/{userNumId}")

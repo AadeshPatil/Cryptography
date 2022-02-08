@@ -36,7 +36,7 @@ export class MessagesComponent implements OnInit {
     this.authService.setDcrptMsg(msg);
     if(msg.type == "text"){
       this.router.navigate(['/txtDecrypt']);
-    }else if(msg.type =="Img"){
+    }else if(msg.type =="img"){
       this.authService.setDcrptMsgForImg();
       this.router.navigate(['/imgDcrpt']); 
     }else if(msg.type =="PDF"){

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
-import { retry } from 'rxjs-compat/operator/retry';
+// import { retry } from 'rxjs-compat/operator/retry';
 import { AuthService } from '../../_services/auth.service';
 import { DataService } from '../../_services/data.service';
-import * as CryptoJS from 'crypto-js';
+// import * as CryptoJS from 'crypto-js';
 import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
@@ -68,7 +68,7 @@ export class TextEncComponent implements OnInit {
         key: controls.key.value,
         userId: controls.userId.value,
         time: currentDateTime,
-        senderName: localStorage.getItem('userName_TOKEN'),
+        senderName: localStorage.getItem('userNumId_TOKEN'),
       };
       if (this.txtEncForm.invalid) {
         alert("Invalid input, please fill all the required fields correctly");
@@ -124,7 +124,7 @@ export class TextEncComponent implements OnInit {
         key: controls.key.value,
         userId: controls.userId.value,
         time: currentDateTime,
-        senderName: localStorage.getItem('userName_TOKEN'),
+        senderName: localStorage.getItem('userNumId_TOKEN'),
       };
       if (this.txtEncForm.invalid) {
         alert("Invalid input, please fill all the required fields correctly");

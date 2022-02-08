@@ -74,10 +74,10 @@ export class DocEncComponent  implements OnInit {
         } else {
           if(this.userAction == "sendMsg"){
             if (confirm("Are you sure you want to send the message to " + Obj.userId + " .")) {
-               this.sendEncData(this.selectedFile,Obj.key,Obj.senderName,Obj.userId,Obj.time,"PDF");
+              this.encData(this.selectedFile,Obj.key,Obj.senderName);
             }
           }else{
-            this.encData(this.selectedFile,Obj.key,Obj.senderName);
+            this.sendEncData(this.selectedFile,Obj.key,Obj.senderName,Obj.userId,Obj.time,"PDF");
 
           }
         }

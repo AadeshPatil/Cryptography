@@ -1609,7 +1609,9 @@ body.fullscreen-mode {
 
 .dropdown-menu-right {
   right: 0;
-  left: auto; }
+  left: auto;
+color: black;
+border-radius: 1px solid; }
 
 .list-group .list-group-item {
   border-color: transparent;
@@ -2955,7 +2957,8 @@ a.text-danger:hover, a.text-danger:focus {
         border-radius: 50%;
         margin-right: 10px; }
     .header .dropdown-user > .dropdown-menu .dropdown-item {
-      color: #6d7c85; }
+      color: black;
+    }
       .header .dropdown-user > .dropdown-menu .dropdown-item i {
         margin-right: 10px; }
   .header .dropdown-inbox, .header .dropdown-notification {
@@ -2963,6 +2966,9 @@ a.text-danger:hover, a.text-danger:focus {
   .header .dropdown-inbox img {
     width: 40px;
     height: 40px; }
+    .header .dropdown-user  .dropdown-menu {
+      border: 2px solid;
+    }
 
 .dropdown-menu-media {
   width: 280px; }

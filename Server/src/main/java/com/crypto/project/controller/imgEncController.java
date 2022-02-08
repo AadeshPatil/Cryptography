@@ -91,6 +91,7 @@ public class imgEncController {
 			System.out.println("mediaType: " + mediaType);
 			InputStreamResource resource = new InputStreamResource(new FileInputStream(encrtFile));
 			System.out.println(resource);
+//			ImgEncHelper.encryptPdfFile(key, content,sender,fileName);
 			return ResponseEntity.ok()
 					// Content-Disposition
 					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + encrtFile.getName())

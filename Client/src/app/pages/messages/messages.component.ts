@@ -11,6 +11,7 @@ export class MessagesComponent implements OnInit {
   messages: any;
   userNumId: any;
   msgForDcrpt: any;
+  usrList: any;
 
   constructor( private router: Router,private dataService: DataService,private authService: AuthService,) { }
 
@@ -19,6 +20,18 @@ export class MessagesComponent implements OnInit {
     this.dataService.getMsgs(this.userNumId).subscribe(data => {
       this.messages = data;
     });
+    this.dataService.fetchAllUser().subscribe(res=>{
+      this.usrList = res;
+      this.usrList.forEach(element => {
+        this.messages.forEach(element2 => {
+          if(element.userNumId ==  element2.senderName){
+            element2['userCName'] = element.completeName;
+          }
+          
+        });
+        
+      });
+    })
   }
 
   deleteMsg(id){

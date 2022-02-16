@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { NgxSpinnerService } from 'ngx-spinner';
 // import { AuthService } from 'src/app/_services/auth.service';
 
+
 @Component({
   selector: 'app-dashb',
   templateUrl: './dashb.component.html',
@@ -35,11 +36,7 @@ export class DashbComponent implements OnInit {
     let currentDateTime = moment().format("MM/DD/YYYY hh:mm:ss");
     
     this.msgObj.time   = currentDateTime;
-    this.auth.getInqury(this.msgObj).subscribe(res =>{
-      alert("THank you for reachinng toward us , our tech team will reach to you sonn !")
-      this.spinner.hide();
-
-    });
+    this.auth.getInqury(this.msgObj);
     this.spinner.hide();
 
   

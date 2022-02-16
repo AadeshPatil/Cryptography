@@ -75,14 +75,21 @@ sendOtp(){
 onSubmitOtp() {
   let pw1 = this.objForm.controls.password.value;
   let pw2 = this.objForm.controls.passwordr.value;
-
+ 
   if (pw1 === pw2) {
     this.userDetils['password'] = pw1;
     this.userDetils['otp'] = this.objForm.controls.otp.value;
+
+    if(this.userDetils['password'].length < 8 ){
+      alert("Please use a strong password!")
+      return;
+    }
     this.auth.resetPw(this.userDetils).subscribe(res =>{
-      if(!res){
+      if(res){
             alert("Succefully reseted your password, please Login with your new creads!");
             this.router.navigate(['/login']);
+      }else{
+        alert("please check your otp");
       }
     });
   }

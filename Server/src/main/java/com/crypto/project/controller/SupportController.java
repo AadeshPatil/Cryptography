@@ -71,7 +71,8 @@ public class SupportController {
 	private ResponseEntity<Object> getSupport(@RequestBody SupportForm obj) {
 		
 		Users user = userRepository.findByUserNumId(obj.getId());
-		obj.setMobileNo(user.getMobileNo().toString());
+		obj.setMobileNo(user.getMobileNo());
+		System.out.println(obj.getMobileNo());
 		obj.setEmail(user.getEmailId());
 		obj.setId(0);
 		supportRepo.save(obj);
@@ -93,7 +94,7 @@ public class SupportController {
 					+ "Thank you!\r\n"
 					+ "<br>\r\n"
 					+ "Sincerely,<br>\r\n"
-					+ "Sercured World Team<br>\r\n"
+					+ "Secured World Team.<br>\r\n"
 					+ "</body>\r\n"
 					+ "</html>";
 			

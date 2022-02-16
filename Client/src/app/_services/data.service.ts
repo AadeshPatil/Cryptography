@@ -92,10 +92,10 @@ export class DataService {
     return this.http.get(`${config.apiUrl}/users/getProfilePic/${userNumId}`,{'headers': fileDownloadHttpoOption, responseType: 'blob', observe: "response" });
   }
 
-  getReciverdetials(ip){
-    // http://ip-api.com/json/103.115.203.115
-    return this.http.get(`http://ip-api.com/json/${ip}`,{});
+  fetchAllUser(){
+    return this.http.get(`${config.apiUrl}/users/fetchUA`,{});
   }
+  
 
 
 

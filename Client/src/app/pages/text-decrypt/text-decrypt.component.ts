@@ -85,14 +85,6 @@ export class TextDecryptComponent implements OnInit {
     }
   }
 
-
-  sendEmail() {
-    this.dataService.getReciverdetials(this.reciverIp).subscribe(res => {
-      this.reciversDetails = res;
-    })
-
-  }
-
   getKey() {
     var length = 16,
         charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",

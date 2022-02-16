@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
 .contact-form{
     background: rgba(214, 208, 208, 0.22);
     border-radius: 16px;
@@ -95,7 +97,6 @@ h3{
     text-decoration: none;
   }
 
-  @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 
 .waviy {
     /* display: flex; */

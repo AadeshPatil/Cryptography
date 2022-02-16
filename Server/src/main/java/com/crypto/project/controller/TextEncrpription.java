@@ -20,6 +20,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 
 import com.crypto.project.configs.NotificationService;
 import com.crypto.project.helpers.GetIp;
+//import com.crypto.project.helpers.SendMailHelp;
 import com.crypto.project.helpers.TextHelper;
 import com.crypto.project.model.Users;
 import com.crypto.project.model.EncData;
@@ -61,7 +62,10 @@ public class TextEncrpription {
 		    	    	Optional<Users> userOptionall =  userServise.findByUserId(value);
 		    	    	long userNumid = userOptionall.get().getUserNumId();
 		    	    	EncData enObj = new EncData(0, EncTxt, txtObj.getTime(), userNumid, txtObj.getSenderName(),"text","","");
-		    	        EncDStored.save(enObj);   	  
+		    	        EncDStored.save(enObj);   
+
+//		    	        SendMailHelp.sendMsg(userOptionall, userOptionall.get().getEmailId(), "", txtObj.getTime());
+		    	        
 		    	  }catch (Exception e) {
 		    		  e.getMessage();
 					// TODO: handle exception
@@ -97,7 +101,7 @@ public class TextEncrpription {
 			// TODO: handle exception
 				e.getMessage();
 		}
-		sendMsg(null, "aadeshpatil650@gmail.com", "103.115.203.114", "17 Jan");
+		sendMsg(null, "aadeshpatil650@gmail.com", "103.115.203.112", "17 Jan");
 		return new ResponseEntity<>(map, HttpStatus.OK);
 
 			
@@ -136,11 +140,11 @@ public class TextEncrpription {
 				+ "                                <tr>\r\n"
 				+ "                                    <td style=\"padding:0 35px;\">\r\n"
 				+ "                                        <h1 style=\"color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;\">Someone have\r\n"
-				+ "                                            succefully decrypted your messgae</h1>\r\n"
+				+ "                                            successfully decrypted your message</h1>\r\n"
 				+ "                                        <span\r\n"
 				+ "                                            style=\"display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;\"></span>\r\n"
 				+ "                                        <p style=\"color:#455056; font-size:15px;line-height:24px; margin:0;\">\r\n"
-				+ "                                           Hey Aadesh Patil , Your message Sended to admin on 17 Jan has decrppeted by ip 192.12.31 .\r\n"
+				+ "                                           Hey Aadesh Patil , Your message Sended to admin on 17 Jan has decrypted at ip "+ Ip+ " .\r\n"
 				+ "                                           <br>\r\n"
 				+ "                                           You can check the details of decrypter.\r\n"
 				+ "                                        </p>\r\n"

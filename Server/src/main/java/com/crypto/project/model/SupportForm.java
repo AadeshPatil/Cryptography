@@ -16,7 +16,7 @@ public class SupportForm {
 	private String issue;
 	private String time;
 	private String email;
-	private String mobileNo;
+	private long mobileNo;
 	private String message;
 	
 	public long getId() {
@@ -43,10 +43,10 @@ public class SupportForm {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getMobileNo() {
+	public long getMobileNo() {
 		return mobileNo;
 	}
-	public void setMobileNo(String mobileNo) {
+	public void setMobileNo(long mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 	public String getMessage() {
@@ -55,7 +55,7 @@ public class SupportForm {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public SupportForm(long id, String issue, String time, String email, String mobileNo, String message) {
+	public SupportForm(long id, String issue, String time, String email,long mobileNo, String message) {
 		super();
 		this.id = id;
 		this.issue = issue;

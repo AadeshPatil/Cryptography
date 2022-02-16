@@ -14,8 +14,8 @@
         <div class="login-form">
             <form (ngSubmit)="onLogin()" [formGroup]="loginForm" autocomplete="off">
                 <input class="form-control" formControlName="username" name="username" id="username"
-                    placeholder="UserID">
-                <input class="form-control" formControlName="password" name="password" id="password"
+                    placeholder="UserId">
+                <input class="form-control" formControlName="password" name="password" id="password" type="password"
                     placeholder="Password">
                 <input class="form-enter" type="submit" value="Login">
                 <br>

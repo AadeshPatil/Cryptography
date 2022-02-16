@@ -14,7 +14,7 @@ export class SupportComponent implements OnInit {
     'id' : "",
     'time' :'',
     "email" :'',
-    "mobileNo" :'',
+    "mobileNo" : 0,
     "message" :'',
     'issue' :'',
   }

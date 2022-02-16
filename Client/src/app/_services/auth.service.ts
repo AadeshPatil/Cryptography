@@ -168,9 +168,12 @@ export class AuthService {
   }
   getInqury(Obj){
     let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'X-Auth-Token', }) }
-    return this.http.post(`${config.apiUrl}/support/getInqury`,Obj,httpOptions);
-
+    return this.http.post(`${config.apiUrl}/support/getInqury`,Obj,httpOptions).subscribe(res =>{
+      alert("Thank you for reachinng toward us , our tech team will reach you soon !")
+      this.spinner.hide();
+    });
   } 
+
   getMsgInqury(Obj){
     let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'X-Auth-Token', }) }
     return this.http.post(`${config.apiUrl}/support/getSupport`,Obj,httpOptions);

@@ -9,7 +9,7 @@
         </div>
 
         <div class="contact-form" *ngIf="userChoice == true">
-            <div class="waviy" *ngIf="sendMsg == true" >
+            <div class="waviy" *ngIf="sendMsg == true">
                 <span style="--i:1">S</span>
                 <span style="--i:2">E</span>
                 <span style="--i:3">N</span>
@@ -23,7 +23,7 @@
                 <span style="--i:10">E</span>
 
             </div>
-            <div class="waviy" *ngIf="sendMsg == false" >
+            <div class="waviy" *ngIf="sendMsg == false">
                 <span style="--i:1">E</span>
                 <span style="--i:2">N</span>
                 <span style="--i:3">C</span>
@@ -61,6 +61,13 @@
                             <input type="text" formControlName="key" name="key" class="form-control"
                                 placeholder="Secure Key *" value="" />
                         </div>
+                        <div *ngIf="sendMsg == true">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                                formControlName="multiSend" name="multiSend" (change)="onChangeMultiSend($event)">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Do You Want to Send to Multiple Users.
+                            </label>
+                        </div>
                     </div>
                     <div class="col-md-6">
 
@@ -77,7 +84,7 @@
                             </p>
                         </div>
                         <br>
-                        <div class="form-group" *ngIf="sendMsg == true">
+                        <div class="form-group" *ngIf="sendMsg == true && userDetilBtnShow==true">
                             <input type="button" class="btnContact" value="Check User Details"
                                 (click)="getUserDetails()" />
                         </div>

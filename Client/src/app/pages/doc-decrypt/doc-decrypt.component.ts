@@ -26,6 +26,7 @@ export class DocDecryptComponent implements OnInit {
     this.isMsg = this.authService.getImgMsg();
 
     this.imgDcrptForm = this.formBuilder.group({
+      id : [''],
       file: [file],
       key: ['', Validators.required],
       filePath: [''],
@@ -42,6 +43,7 @@ export class DocDecryptComponent implements OnInit {
   onSubmit() {
     var controls = this.imgDcrptForm.controls;
     var Obj = {
+      id : controls.id.value,
       key: controls.key.value,
       filePath: controls.filePath.value,
     };
@@ -50,7 +52,7 @@ export class DocDecryptComponent implements OnInit {
       return;
     } else {
       if (this.msgImgDcrpt == true) {
-        this.dcrptMsgImg(Obj.filePath, Obj.key, this.senderName)
+        this.dcrptMsgImg(Obj.filePath, Obj.key, this.senderName,Obj.id)
       } else {
         this.dcrptData(this.selectedFile, Obj.key, this.senderName);
       }
@@ -76,8 +78,9 @@ export class DocDecryptComponent implements OnInit {
   }
 
 
-  dcrptMsgImg(filePath, key, senderName) {
+  dcrptMsgImg(filePath, key, senderName,id) {
     var data = new FormData();
+    data.append("id",id);
     data.append("key", key);
     data.append("filePath", filePath);
     data.append("sender", senderName);

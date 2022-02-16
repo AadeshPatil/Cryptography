@@ -20,8 +20,6 @@ import { TextEncComponent } from './pages/text-enc/text-enc.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { UserDetilsComponent } from './pages/user-detils/user-detils.component';
 import { ImgEncComponent } from './pages/img-enc/img-enc.component';
-import { TypingAnimationDirective } from 'angular-typing-animation'
-
 import { HelperService } from './_services/helper.service';
 import { ImgDecryptComponent } from './pages/img-decrypt/img-decrypt.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -32,6 +30,7 @@ import { SupportComponent } from './pages/support/support.component';
 import { ResetPwComponent } from './pages/reset-pw/reset-pw.component'
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { GenKeyComponent } from './pages/gen-key/gen-key.component';
+import { TypingAnimationDirective } from 'angular-typing-animation'
 @NgModule({
    declarations: [
     AppComponent,
@@ -44,15 +43,13 @@ import { GenKeyComponent } from './pages/gen-key/gen-key.component';
     RegisterComponent,
     DocDecryptComponent,
     DocEncComponent,
-    DashbComponent,
     SupportComponent,
     TypingAnimationDirective,
+    DashbComponent,
     ResetPwComponent,
     ErrorPageComponent,
     GenKeyComponent
 
-    
-    
   ],
   imports: [
     AppRoutingModule,
@@ -67,7 +64,6 @@ import { GenKeyComponent } from './pages/gen-key/gen-key.component';
     PdfViewerModule,
     DataTableModule,
     DeviceDetectorModule,
-    
   ],
   providers: [ScriptLoaderService, DataService, DatePipe,HelperService],
   bootstrap: [AppComponent]

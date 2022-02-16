@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 
 section.cover{
   margin-top: 20px;
@@ -104,7 +105,6 @@ section.cover .content .card:hover{
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 
 .waviy {
     /* display: flex; */

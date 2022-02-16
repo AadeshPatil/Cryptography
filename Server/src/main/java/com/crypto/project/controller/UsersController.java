@@ -122,7 +122,10 @@ public class UsersController {
 	    ApplicationUser optionalAppUser = applicationUserRepository.findByUsername(user.getUserId()).get();
 	    optionalAppUser.setRole(user.getRole());
 	    //optionalAppUser.setPassword(user.getPassword());
+	    
 	    applicationUserRepository.save(optionalAppUser);
+	    String completeName= user.getfName().concat(" "+user.getlName());
+	    user.setCompleteName(completeName);
 		userRepository.save(user);
 	
 		return ResponseEntity.ok().build();
@@ -212,32 +215,29 @@ public class UsersController {
 		Users user = userRepository.findByUserNumId(userNumId);
 		try {
 			
-			File exFile = new File(user.getProfile_pic());
+//			File exFile = new File(user.getProfile_pic());
+//			
+//			if(exFile.exists()){
+//				exFile.delete();
+//			}
+//			
+			File file1 = ImgEncHelper.convert(profilePic);
+			byte[] content = ImgEncHelper.getFile(file1);
+			System.out.println(content);
+			String fileName = file1.getName();
 			
-			if(exFile.delete()) {
-				
-				File file1 = ImgEncHelper.convert(profilePic);
-				byte[] content = ImgEncHelper.getFile(file1);
-				System.out.println(content);
-				String fileName = file1.getName();
-				
-				String filePath = "E:\\CryptoGraphy_project\\EncData\\"+user.getUserId();
-		    	File f = new File(filePath);
-		    	f.mkdir();
-		    	
-		        FileOutputStream fos = new FileOutputStream(filePath+"\\"+fileName);
-		        fos.write(content);
-		        fos.close();
-		        File encrtfile = new File(filePath+"\\"+fileName);
-		        user.setUserNumId(userNumId);
-		        user.setProfile_pic(encrtfile.getAbsolutePath());
-		        userRepository.save(user);
-				return ResponseEntity.ok().build();
-
-			}else {
-				return ResponseEntity.ok().build();
-			}
-			
+			String filePath = "E:\\CryptoGraphy_project\\EncData\\"+user.getUserId();
+	    	File f = new File(filePath);
+	    	f.mkdir();
+	    	
+	        FileOutputStream fos = new FileOutputStream(filePath+"\\"+fileName);
+	        fos.write(content);
+	        fos.close();
+	        File encrtfile = new File(filePath+"\\"+fileName);
+	        user.setUserNumId(userNumId);
+	        user.setProfile_pic(encrtfile.getAbsolutePath());
+	        userRepository.save(user);
+			return ResponseEntity.ok().build();
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -279,7 +279,7 @@ public class UsersController {
 	
 	@PostMapping("/UpdPwd")
 	@CrossOrigin("*")
-	    public ResponseEntity<Object> updUserPassword(@RequestBody Users user) {
+	    public Users updUserPassword(@RequestBody Users user) {
 			Users exUser = userRepository.findByUserNumId(user.getUserNumId());
 			try {
 				if(exUser.getOtp().equals(user.getOtp())) {
@@ -291,9 +291,11 @@ public class UsersController {
 				    optionalAppUser.setPassword(user.getPassword());
 				    applicationUserRepository.save(optionalAppUser);
 					userRepository.save(user);
-					return ResponseEntity.ok().build();
+					Users exUser2 = userRepository.findByUserNumId(user.getUserNumId());
+					return  exUser2;
+
 				}else {
-					return ResponseEntity.ok().build();
+					return null;
 				}
 				
 			} catch (Exception e) {

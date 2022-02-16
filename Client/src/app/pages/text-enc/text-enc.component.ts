@@ -60,6 +60,7 @@ export class TextEncComponent implements OnInit {
     this.spinner.show();
 
     if (this.txtEncForm.controls.multiSend.value == false) {
+
       console.log(this.txtEncForm);
       let currentDateTime = moment().format("MM/DD/YYYY hh:mm:ss");
       var controls = this.txtEncForm.controls;
@@ -87,8 +88,6 @@ export class TextEncComponent implements OnInit {
           } else {
             if (confirm("Are you sure you want to send the message to " + Obj.userId + " .")) {
               console.log(Obj);
-
-
               try {
                 let encrpted_Text = this.auth.getEncrptData(Obj.text,Obj.key);
                 if (encrpted_Text) {

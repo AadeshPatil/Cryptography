@@ -30,7 +30,7 @@ export class ImgEncComponent implements OnInit {
       file: [file, Validators.required],
       userId: [''],
       key: ['', Validators.required],
-      multiSend: [''],
+      multiSend: [false],
     });
   }
 
@@ -69,33 +69,35 @@ export class ImgEncComponent implements OnInit {
       this.spiner.hide();
       return;
     } else {
-      if (this.imgEncForm.controls.multiSend.value == true) {
-        this.sendEncData(this.selectedFile, Obj.key, Obj.senderName, Obj.userId, Obj.time, "img");
+      if (this.userAction == "encrptImg") {
+        // if user wannt to only encrypt the file
+        this.encData(this.selectedFile, Obj.key, Obj.senderName);
         this.spiner.hide();
-      } else {
-        this.dataService.getUserDetails(Obj.userId).subscribe(data => {
-          this.userDetils = data;
-          if (this.userDetils.length == 0) {
-            this.userDetilsShow = false;
-            alert("Please Enter Valid User ID");
-            this.spiner.hide();
-          } else {
-            if (this.userAction == "sendMsg") {
-              this.encData(this.selectedFile, Obj.key, Obj.senderName);
+
+      } else if (this.userAction == "sendMsg") {
+        //if user want to send the encrypt file to single user;
+        if (this.imgEncForm.controls.multiSend.value == false) {
+          this.dataService.getUserDetails(Obj.userId).subscribe(data => {
+            if (!data) {
+              alert("Please Enter Valid User ID");
               this.spiner.hide();
-
             } else {
-              if (confirm("Are you sure you want to send the message to " + Obj.userId + " .")) {
-                this.sendEncData(this.selectedFile, Obj.key, Obj.senderName, Obj.userId, Obj.time, "img");
-                this.spiner.hide();
-              }
-
+              this.sendEncData(this.selectedFile, Obj.key, Obj.senderName, Obj.userId, Obj.time, "img");
+              this.spiner.hide();
             }
-          }
-        });
+          });
+        } else {
+          this.sendEncData(this.selectedFile, Obj.key, Obj.senderName, Obj.userId, Obj.time, "img");
+          this.spiner.hide();
+        }
       }
     }
+    this.spiner.hide();
+
   }
+
+
+
   sendEncData(selectedFile: File, key: any, senderName: string, userId: any, time: any, filetype: any) {
     var data = new FormData();
     data.append("key", key);
@@ -138,13 +140,14 @@ export class ImgEncComponent implements OnInit {
     });
   }
 
-  setUserChoice(userChoice) {
+  setUserChoice(u) {
     this.userChoice = true;
-    this.userAction = userChoice;
-    if (userChoice == 'sendMsg') {
+
+    this.userAction = u;
+    if (u == 'sendMsg') {
       this.sendMsg = true;
       this.encrptImg = false;
-    } else if (userChoice == 'encrptImg') {
+    } else if (u == 'encrptImg') {
       this.encrptImg = true;
       this.sendMsg = false;
     }

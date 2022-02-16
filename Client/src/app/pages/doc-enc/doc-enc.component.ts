@@ -30,7 +30,7 @@ export class DocEncComponent implements OnInit {
       file: [file, Validators.required],
       userId: [''],
       key: ['', Validators.required],
-      multiSend: [''],
+      multiSend: [false],
     });
   }
 
@@ -68,28 +68,30 @@ export class DocEncComponent implements OnInit {
       alert("Invalid input, please fill all the required fields correctly");
       return;
     } else {
-      if (this.imgEncForm.controls.multiSend.value == true) {
-        this.sendEncData(this.selectedFile, Obj.key, Obj.senderName, Obj.userId, Obj.time, "PDF");
-      } else {
-        this.dataService.getUserDetails(Obj.userId).subscribe(data => {
-          this.userDetils = data;
-          if (this.userDetils.length == 0) {
-            this.userDetilsShow = false;
-            alert("Please Enter Valid User ID");
-          } else {
-            if (this.userAction == "sendMsg") {
-              if (confirm("Are you sure you want to send the message to " + Obj.userId + " .")) {
-                this.encData(this.selectedFile, Obj.key, Obj.senderName);
-              }
+      if (this.userAction == 'encrptImg') {
+        // if user wannt to only encrypt the file
+        this.encData(this.selectedFile, Obj.key, Obj.senderName);
+      } else if (this.userAction == "sendMsg") {
+        // message send
+        if (this.imgEncForm.controls.multiSend.value == false) {
+          this.dataService.getUserDetails(Obj.userId).subscribe(data => {
+            if (!data) {
+              this.userDetilsShow = false;
+              alert("Please Enter Valid User ID");
+              return;
             } else {
               this.sendEncData(this.selectedFile, Obj.key, Obj.senderName, Obj.userId, Obj.time, "PDF");
-
             }
-          }
-        });
+          });
+        }else{
+          this.sendEncData(this.selectedFile, Obj.key, Obj.senderName, Obj.userId, Obj.time, "PDF");
+        }
+
       }
     }
   }
+
+
   sendEncData(selectedFile: File, key: any, senderName: string, userId: any, time: any, filetype: any) {
     var data = new FormData();
     data.append("key", key);

@@ -30,7 +30,7 @@ import { SupportComponent } from './pages/support/support.component';
 import { ResetPwComponent } from './pages/reset-pw/reset-pw.component'
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { GenKeyComponent } from './pages/gen-key/gen-key.component';
-import { TypingAnimationDirective } from 'angular-typing-animation'
+// import { TypingAnimationDirective } from 'angular-typing-animation'
 @NgModule({
    declarations: [
     AppComponent,
@@ -44,7 +44,6 @@ import { TypingAnimationDirective } from 'angular-typing-animation'
     DocDecryptComponent,
     DocEncComponent,
     SupportComponent,
-    TypingAnimationDirective,
     DashbComponent,
     ResetPwComponent,
     ErrorPageComponent,

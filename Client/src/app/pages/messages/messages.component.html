@@ -14,7 +14,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let msg of messages ; let i=index" >
-        <th scope="row">{{i+1}}<i *ngIf="msg?.reciverLocation == null ||msg?.reciverLocation == ''" class="fa fa-certificate" style="color: red;" aria-hidden="true"></i>
+        <th scope="row">{{i+1}}<i *ngIf="msg?.reciverLocation == null ||msg?.reciverLocation == ''" class="fa fa-comment" style="color: red;" aria-hidden="true"></i>
         </th>
         <td>{{msg?.time}}</td>
         <td>{{msg?.type}}</td>

@@ -84,11 +84,11 @@ public class TextEncrpription {
 	@PostMapping("/dcrtTxt")
 	public ResponseEntity<Object> dcrptTxt(@RequestBody TextEncDcrtModel txtObj,HttpServletRequest request) throws NoSuchElementException, MessagingException {
 		HashMap<String, String> map = new HashMap<>();
+		String userIp = ipLoc.getClientIp(request);
 		try {
 			Optional<EncData> data = EncDStored.findById(txtObj.getId());
 			String EncTxt = TextHelper.decrypt(txtObj.getText(), txtObj.getKey());
 		    map.put("txt", EncTxt);
-	    	String userIp = ipLoc.getClientIp(request);
 	    	map.put("ip",userIp);
 	    	data.get().setReciverLocation(userIp);
 	    	EncDStored.save(data.get());
@@ -101,7 +101,7 @@ public class TextEncrpription {
 			// TODO: handle exception
 				e.getMessage();
 		}
-		sendMsg(null, "aadeshpatil650@gmail.com", "103.115.203.112", "17 Jan");
+		sendMsg(null, "aadeshpatil650@gmail.com", userIp, "17 Jan");
 		return new ResponseEntity<>(map, HttpStatus.OK);
 
 			
@@ -111,6 +111,7 @@ public class TextEncrpription {
 	
 	private void sendMsg(Optional<Users> sender, String email,String Ip,String time) throws MessagingException{
 		try {
+			String Site = "https://whatismyipaddress.com/ip/".concat(Ip);
 		String mailBody = "<html lang=\"en-US\">\r\n"
 				+ "<body marginheight=\"0\" topmargin=\"0\" marginwidth=\"0\" style=\"margin: 0px; background-color: #f2f3f8;\" leftmargin=\"0\">\r\n"
 				+ "    <!--100% body table-->\r\n"
@@ -148,7 +149,7 @@ public class TextEncrpription {
 				+ "                                           <br>\r\n"
 				+ "                                           You can check the details of decrypter.\r\n"
 				+ "                                        </p>\r\n"
-				+ "                                        <a href=\"https://whatismyipaddress.com/ip/\""+Ip+""
+				+ "                                        <a href="+Site
 				+ "                                            style=\"background:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;\">\r\n"
 				+ "                                            Check Details</a>\r\n"
 				+ "                                    </td>\r\n"

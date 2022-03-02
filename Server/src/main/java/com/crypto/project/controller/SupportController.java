@@ -56,15 +56,14 @@ public class SupportController {
 					+ "</body>\r\n"
 					+ "</html>";
 			
-			sendMail.sendNotification(obj.getEmail(), "Secured World : Regarding Your Qurry", mailBody);
+			sendMail.sendNotification(obj.getEmail(), "Secured World : Regarding Your Query", mailBody);
 			return ResponseEntity.ok().build();
 
 		} catch (Exception e) {
 			// TODO: handle exception
 			return  null;
 		}
-		
-		
+	
 	}
 	
 	@PostMapping("/getSupport")

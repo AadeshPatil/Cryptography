@@ -84,10 +84,10 @@ public class TextEncrpription {
 	@PostMapping("/dcrtTxt")
 	public ResponseEntity<Object> dcrptTxt(@RequestBody TextEncDcrtModel txtObj,HttpServletRequest request) throws NoSuchElementException, MessagingException {
 		HashMap<String, String> map = new HashMap<>();
-		String userIp = ipLoc.getClientIp(request);
 		try {
 			Optional<EncData> data = EncDStored.findById(txtObj.getId());
 			String EncTxt = TextHelper.decrypt(txtObj.getText(), txtObj.getKey());
+			String userIp = ipLoc.getClientIp(request);                 
 		    map.put("txt", EncTxt);
 	    	map.put("ip",userIp);
 	    	data.get().setReciverLocation(userIp);
@@ -101,7 +101,7 @@ public class TextEncrpription {
 			// TODO: handle exception
 				e.getMessage();
 		}
-		sendMsg(null, "aadeshpatil650@gmail.com", userIp, "17 Jan");
+		sendMsg(null, "aadeshpatil650@gmail.com", "103.146.240.239", "17 Feb");
 		return new ResponseEntity<>(map, HttpStatus.OK);
 
 			

@@ -16,7 +16,7 @@ export class DocDecryptComponent implements OnInit {
   selectedFile: any;
   senderName: string;
   dcrptObj: any;
-  msgImgDcrpt: boolean = false;
+  msgImgDcrpt: boolean = true;
   isMsg: boolean;
   constructor(private authService: AuthService, private dataService: DataService, private formBuilder: FormBuilder, private plugAndPlay: HelperService) { }
 
